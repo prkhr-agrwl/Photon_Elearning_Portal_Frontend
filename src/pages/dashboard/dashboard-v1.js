@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
-import Youtube from 'react-youtube';
+// import Youtube from 'react-youtube';
 // import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import {
   Panel,
@@ -58,34 +58,22 @@ const DashboardV1 = () => {
           <Panel>
             <PanelHeader>Lecture 1</PanelHeader>
             <PanelBody className='video-container'>
-              <Youtube
-                videoId='2g811Eo7K8U'
-                opts={{
-                  height: '100%',
-                  width: '100%',
-                  playerVars: {
-                    // https://developers.google.com/youtube/player_parameters
-                    autoplay: 1
-                  }
-                }}
-                onReady={e => onPlayerReady(e)}
+              <iframe
+                src='https://player.vimeo.com/video/132328313'
+                frameborder='0'
+                allow='autoplay; fullscreen'
+                allowfullscreen
               />
             </PanelBody>
           </Panel>
           <Panel>
             <PanelHeader>Lecture 2</PanelHeader>
             <PanelBody className='video-container'>
-              <Youtube
-                videoId='2g811Eo7K8U'
-                opts={{
-                  height: '100%',
-                  width: '100%',
-                  playerVars: {
-                    // https://developers.google.com/youtube/player_parameters
-                    autoplay: 1
-                  }
-                }}
-                onReady={e => onPlayerReady(e)}
+              <iframe
+                src='https://player.vimeo.com/video/132328313'
+                frameborder='0'
+                allow='autoplay; fullscreen'
+                allowfullscreen
               />
             </PanelBody>
           </Panel>
