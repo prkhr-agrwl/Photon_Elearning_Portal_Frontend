@@ -60,7 +60,7 @@ const routes = [
   {
     path: '/',
     exact: true,
-    component: () => <Redirect to='/dashboard/v2'/>
+    component: () => <Redirect to='/dashboard/v1' />
   },
   {
     path: '/dashboard/v1',
@@ -76,264 +76,263 @@ const routes = [
   {
     path: '/email/inbox',
     title: 'Email Inbox',
-    component: () => <EmailInbox />,
+    component: () => <EmailInbox />
   },
   {
     path: '/email/compose',
     title: 'Email Compose',
-    component: () => <EmailCompose />,
+    component: () => <EmailCompose />
   },
   {
     path: '/email/detail',
     title: 'Email Detail',
-    component: () => <EmailDetail />,
+    component: () => <EmailDetail />
   },
   {
     path: '/widgets',
     title: 'Widgets',
-    component: () => <Widgets />,
+    component: () => <Widgets />
   },
   {
     path: '/ui/general',
     title: 'UI General',
-    component: () => <UIGeneral />,
+    component: () => <UIGeneral />
   },
   {
     path: '/ui/typography',
     title: 'UI Typography',
-    component: () => <UITypography />,
+    component: () => <UITypography />
   },
   {
     path: '/ui/tabs-accordion',
     title: 'UI Tabs Accordion',
-    component: () => <UITabsAccordion />,
+    component: () => <UITabsAccordion />
   },
   {
     path: '/ui/modal-notification',
     title: 'UI Modal & Notification',
-    component: () => <UIModalNotification />,
+    component: () => <UIModalNotification />
   },
   {
     path: '/ui/widget-boxes',
     title: 'UI Widget Boxes',
-    component: () => <UIWidgetBoxes />,
+    component: () => <UIWidgetBoxes />
   },
   {
     path: '/ui/media-object',
     title: 'UI Media Object',
-    component: () => <UIMediaObject />,
+    component: () => <UIMediaObject />
   },
   {
     path: '/ui/buttons',
     title: 'UI Buttons',
-    component: () => <UIButtons />,
+    component: () => <UIButtons />
   },
   {
     path: '/ui/icons',
     title: 'UI Icons',
-    component: () => <UIIcons />,
+    component: () => <UIIcons />
   },
   {
     path: '/ui/simple-line-icons',
     title: 'UI Simple Line Icons',
-    component: () => <UISimpleLineIcons />,
+    component: () => <UISimpleLineIcons />
   },
   {
     path: '/ui/ionicons',
     title: 'UI Ionicons',
-    component: () => <UIIonicons />,
+    component: () => <UIIonicons />
   },
   {
     path: '/ui/language-bar-icon',
     title: 'UI General',
-    component: () => <UILanguageBarIcon />,
+    component: () => <UILanguageBarIcon />
   },
   {
     path: '/ui/social-buttons',
     title: 'UI Social Buttons',
-    component: () => <UISocialButtons />,
+    component: () => <UISocialButtons />
   },
   {
     path: '/bootstrap-4',
     title: 'Bootstrap 4',
-    component: () => <Bootstrap4 />,
+    component: () => <Bootstrap4 />
   },
   {
     path: '/form/elements',
     title: 'Form Elements',
-    component: () => <FormElements />,
+    component: () => <FormElements />
   },
   {
     path: '/form/plugins',
     title: 'Form Plugins',
-    component: () => <FormPlugins />,
+    component: () => <FormPlugins />
   },
   {
     path: '/table/basic',
     title: 'Basic Tables',
-    component: () => <TableBasic />,
+    component: () => <TableBasic />
   },
   {
     path: '/table/data',
     title: 'Data Tables',
-    component: () => <TableData />,
+    component: () => <TableData />
   },
   {
     path: '/chart/js',
     title: 'Chart JS',
-    component: () => <ChartJS />,
+    component: () => <ChartJS />
   },
   {
     path: '/chart/d3',
     title: 'd3 Chart',
-    component: () => <ChartD3 />,
+    component: () => <ChartD3 />
   },
   {
     path: '/calendar',
     title: 'Calendar',
-    component: () => <Calendar />,
+    component: () => <Calendar />
   },
   {
     path: '/map',
     title: 'Map',
-    component: () => <Map />,
+    component: () => <Map />
   },
   {
     path: '/gallery',
     title: 'Gallery',
-    component: () => <Gallery />,
+    component: () => <Gallery />
   },
   {
     path: '/page-option/blank',
     title: 'Blank Page',
-    component: () => <PageBlank />,
+    component: () => <PageBlank />
   },
   {
     path: '/page-option/with-footer',
     title: 'Page with Footer',
-    component: () => <PageWithFooter />,
+    component: () => <PageWithFooter />
   },
   {
     path: '/page-option/without-sidebar',
     title: 'Page without Sidebar',
-    component: () => <PageWithoutSidebar />,
+    component: () => <PageWithoutSidebar />
   },
   {
     path: '/page-option/with-right-sidebar',
     title: 'Page with Right Sidebar',
-    component: () => <PageWithRightSidebar />,
+    component: () => <PageWithRightSidebar />
   },
   {
     path: '/page-option/with-minified-sidebar',
     title: 'Page with Minified Sidebar',
-    component: () => <PageWithMinifiedSidebar />,
+    component: () => <PageWithMinifiedSidebar />
   },
   {
     path: '/page-option/with-two-sidebar',
     title: 'PageWithTwoSidebar',
-    component: () => <PageWithTwoSidebar />,
+    component: () => <PageWithTwoSidebar />
   },
   {
     path: '/page-option/full-height',
     title: 'Full Height Content',
-    component: () => <PageFullHeight />,
+    component: () => <PageFullHeight />
   },
   {
     path: '/page-option/with-wide-sidebar',
     title: 'Page with Wide Sidebar',
-    component: () => <PageWithWideSidebar />,
+    component: () => <PageWithWideSidebar />
   },
   {
     path: '/page-option/with-light-sidebar',
     title: 'Page with Light Sidebar',
-    component: () => <PageWithLightSidebar />,
+    component: () => <PageWithLightSidebar />
   },
   {
     path: '/page-option/with-mega-menu',
     title: 'Page with Mega Menu',
-    component: () => <PageWithMegaMenu />,
+    component: () => <PageWithMegaMenu />
   },
   {
     path: '/page-option/with-top-menu',
     title: 'Page with Top Menu',
-    component: () => <PageWithTopMenu />,
+    component: () => <PageWithTopMenu />
   },
   {
     path: '/page-option/with-boxed-layout',
     title: 'Page with Boxed Layout',
-    component: () => <PageWithBoxedLayout />,
+    component: () => <PageWithBoxedLayout />
   },
   {
     path: '/page-option/with-mixed-menu',
     title: 'Page with Mixed Menu',
-    component: () => <PageWithMixedMenu />,
+    component: () => <PageWithMixedMenu />
   },
   {
     path: '/page-option/boxed-layout-with-mixed-menu',
     title: 'Boxed Layout with Mixed Menu',
-    component: () => <PageBoxedLayoutWithMixedMenu />,
+    component: () => <PageBoxedLayoutWithMixedMenu />
   },
   {
     path: '/page-option/with-transparent-sidebar',
     title: 'Page with Transparent Sidebar',
-    component: () => <PageWithTransparentSidebar />,
+    component: () => <PageWithTransparentSidebar />
   },
   {
     path: '/extra/timeline',
     title: 'Extra Timeline',
-    component: () => <ExtraTimeline />,
+    component: () => <ExtraTimeline />
   },
   {
     path: '/extra/coming-soon',
     title: 'Extra Coming Soon',
-    component: () => <ExtraComingSoon />,
+    component: () => <ExtraComingSoon />
   },
   {
     path: '/extra/search',
     title: 'Extra Search Results',
-    component: () => <ExtraSearch />,
+    component: () => <ExtraSearch />
   },
   {
     path: '/extra/invoice',
     title: 'Extra Invoice',
-    component: () => <ExtraInvoice />,
+    component: () => <ExtraInvoice />
   },
   {
     path: '/extra/error',
     title: 'Extra Error',
-    component: () => <ExtraError />,
+    component: () => <ExtraError />
   },
   {
     path: '/extra/profile',
     title: 'Extra Profile',
-    component: () => <ExtraProfile />,
+    component: () => <ExtraProfile />
   },
   {
     path: '/user/login-v1',
     title: 'Login',
-    component: () => <LoginV1 />,
+    component: () => <LoginV1 />
   },
   {
     path: '/user/login-v2',
     title: 'Login v2',
-    component: () => <LoginV2 />,
+    component: () => <LoginV2 />
   },
   {
     path: '/user/login-v3',
     title: 'Login v3',
-    component: () => <LoginV3 />,
+    component: () => <LoginV3 />
   },
   {
     path: '/user/register-v3',
     title: 'Register v3',
-    component: () => <RegisterV3 />,
+    component: () => <RegisterV3 />
   },
   {
     path: '/helper/css',
     title: 'Predefined CSS Classes',
-    component: () => <HelperCSS />,
+    component: () => <HelperCSS />
   }
 ];
-
 
 export default routes;

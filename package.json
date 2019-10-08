@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@rowno/sparkline": "^3.0.1",
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "bootstrap-social": "^5.1.1",
     "chart.js": "^2.7.3",
     "codemirror": "^5.42.2",
