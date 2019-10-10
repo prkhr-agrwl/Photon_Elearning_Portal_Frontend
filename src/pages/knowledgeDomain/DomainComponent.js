@@ -28,6 +28,16 @@ const DomainComponent = () => {
       collapse: !newArray[index].collapse
     };
     setDomain(newArray);
+  };
+  const handleAdd = () => {
+    const text = prompt('');
+    const newArray = [...domain];
+    newArray[domain.length] = {
+      id: domain.length,
+      collapse: false,
+      title: text
+    };
+    setDomain(newArray);
     // console.log(newArray);
   };
   return (
@@ -49,13 +59,17 @@ const DomainComponent = () => {
               <CardBody>
                 <ChapterComponent />
                 {/* we need to pass a prop here to tell the child components which kd it is */}
-                <button className='btn btn-primary btn-block m-b-5'>
-                  Add Subject
-                </button>
               </CardBody>
             </Collapse>
           </Card>
         ))}
+        <hr />
+        <button
+          onClick={e => handleAdd()}
+          className='btn btn-primary btn-block m-b-5'
+        >
+          Add Domain
+        </button>
       </div>
     </Fragment>
   );

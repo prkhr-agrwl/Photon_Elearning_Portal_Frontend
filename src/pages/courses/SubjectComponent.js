@@ -30,6 +30,17 @@ const SubjectComponent = () => {
     setSubject(newArray);
     // console.log(newArray);
   };
+  const handleAdd = () => {
+    const text = prompt('');
+    const newArray = [...subject];
+    newArray[subject.length] = {
+      id: subject.length,
+      collapse: false,
+      title: text
+    };
+    setSubject(newArray);
+    // console.log(newArray);
+  };
   return (
     <Fragment>
       <div id='accordion' className='accordion'>
@@ -48,13 +59,17 @@ const SubjectComponent = () => {
             <Collapse isOpen={subject.collapse}>
               <CardBody>
                 <ChapterComponent />
-                <button className='btn btn-primary btn-block m-b-5'>
-                  Create Chapter
-                </button>
               </CardBody>
             </Collapse>
           </Card>
         ))}
+        <hr />
+        <button
+          onClick={e => handleAdd()}
+          className='btn btn-primary btn-block m-b-5'
+        >
+          Add Subject
+        </button>
       </div>
     </Fragment>
   );

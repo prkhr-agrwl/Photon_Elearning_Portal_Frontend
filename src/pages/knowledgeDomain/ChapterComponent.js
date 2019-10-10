@@ -25,6 +25,17 @@ const ChapterComponent = () => {
     setChapter(newArray);
     // console.log(newArray);
   };
+  const handleAdd = () => {
+    const text = prompt('');
+    const newArray = [...chapter];
+    newArray[chapter.length] = {
+      id: chapter.length,
+      collapse: false,
+      title: text
+    };
+    setChapter(newArray);
+    // console.log(newArray);
+  };
   return (
     <Fragment>
       <div id='accordion' className='accordion'>
@@ -43,13 +54,18 @@ const ChapterComponent = () => {
             <Collapse isOpen={chapter.collapse}>
               <CardBody>
                 <TopicComponent />
-                <button className='btn btn-primary btn-block m-b-5'>
-                  Add Topic
-                </button>
+                {/* we need to pass a prop here to tell the child components which chapter it is */}
               </CardBody>
             </Collapse>
           </Card>
         ))}
+        <hr />
+        <button
+          onClick={e => handleAdd()} //a prop has to be passed in here to tell which domain this chapter has to be added to
+          className='btn btn-primary btn-block m-b-5'
+        >
+          Add Chapter
+        </button>
       </div>
     </Fragment>
   );

@@ -19,11 +19,6 @@ const Courses = () => {
           <PanelBody>
             <CourseComponent />
           </PanelBody>
-          <PanelFooter>
-            <button className='btn btn-primary btn-block m-b-5'>
-              Add Course
-            </button>
-          </PanelFooter>
         </Panel>
       </div>
     </Fragment>

@@ -19,11 +19,6 @@ const KnowledgeDomain = () => {
           <PanelBody>
             <DomainComponent />
           </PanelBody>
-          <PanelFooter>
-            <button className='btn btn-primary btn-block m-b-5'>
-              Add Domain
-            </button>
-          </PanelFooter>
         </Panel>
       </div>
     </Fragment>

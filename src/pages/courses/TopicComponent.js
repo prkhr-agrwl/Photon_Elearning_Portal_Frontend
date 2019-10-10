@@ -24,6 +24,17 @@ const TopicComponent = () => {
     setTopic(newArray);
     // console.log(newArray);
   };
+  const handleAdd = () => {
+    const text = prompt('');
+    const newArray = [...topic];
+    newArray[topic.length] = {
+      id: topic.length,
+      collapse: false,
+      title: text
+    };
+    setTopic(newArray);
+    console.log(newArray);
+  };
   return (
     <Fragment>
       <div id='accordion' className='accordion'>
@@ -43,6 +54,13 @@ const TopicComponent = () => {
             <Collapse isOpen={topic.collapse}></Collapse>
           </Card>
         ))}
+        <hr />
+        <button
+          onClick={e => handleAdd()}
+          className='btn btn-primary btn-block m-b-5'
+        >
+          Add Topic
+        </button>
       </div>
     </Fragment>
   );

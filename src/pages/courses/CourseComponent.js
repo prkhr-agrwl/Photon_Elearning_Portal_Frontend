@@ -25,6 +25,17 @@ const CourseComponent = () => {
     setCourse(newArray);
     // console.log(newArray);
   };
+  const handleAdd = () => {
+    const text = prompt('');
+    const newArray = [...course];
+    newArray[course.length] = {
+      id: course.length,
+      collapse: false,
+      title: text
+    };
+    setCourse(newArray);
+    // console.log(newArray);
+  };
   return (
     <Fragment>
       <div id='accordion' className='accordion'>
@@ -43,14 +54,17 @@ const CourseComponent = () => {
             <Collapse isOpen={course.collapse}>
               <CardBody>
                 <SubjectComponent />
-                {/* we need to pass a prop here to tell the child components which course it is */}
-                <button className='btn btn-primary btn-block m-b-5'>
-                  Add Subject
-                </button>
               </CardBody>
             </Collapse>
           </Card>
         ))}
+        <hr />
+        <button
+          onClick={e => handleAdd()}
+          className='btn btn-primary btn-block m-b-5'
+        >
+          Add Course
+        </button>
       </div>
     </Fragment>
   );
