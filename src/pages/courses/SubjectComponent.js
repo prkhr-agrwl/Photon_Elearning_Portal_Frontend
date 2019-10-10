@@ -1,0 +1,63 @@
+import React, { Fragment, useState } from 'react';
+import { Collapse, CardHeader, CardBody, Card } from 'reactstrap';
+import ChapterComponent from './ChapterComponent';
+import { Link } from 'react-router-dom';
+
+const SubjectComponent = () => {
+  const [subject, setSubject] = useState([
+    {
+      id: 0,
+      collapse: false,
+      title: 'Physics'
+    },
+    {
+      id: 1,
+      collapse: false,
+      title: 'Chemistry'
+    },
+    {
+      id: 2,
+      collapse: false,
+      title: 'Maths'
+    }
+  ]);
+  const toggleCollapse = index => {
+    const newArray = [...subject];
+    newArray[index] = {
+      ...newArray[index],
+      collapse: !newArray[index].collapse
+    };
+    setSubject(newArray);
+    // console.log(newArray);
+  };
+  return (
+    <Fragment>
+      <div id='accordion' className='accordion'>
+        {subject.map((subject, i) => (
+          <Card className='bg-dark text-white' key={i}>
+            <CardHeader
+              className={
+                'card-header bg-dark-darker text-white pointer-cursor ' +
+                (!subject.collapse ? 'collapsed ' : '')
+              }
+              onClick={() => toggleCollapse(subject.id)}
+            >
+              <i className='fa fa-circle f-s-8 mr-2 text-indigo'></i>{' '}
+              <Link>{subject.title}</Link>
+            </CardHeader>
+            <Collapse isOpen={subject.collapse}>
+              <CardBody>
+                <ChapterComponent />
+                <button className='btn btn-primary btn-block m-b-5'>
+                  Create Chapter
+                </button>
+              </CardBody>
+            </Collapse>
+          </Card>
+        ))}
+      </div>
+    </Fragment>
+  );
+};
+
+export default SubjectComponent;

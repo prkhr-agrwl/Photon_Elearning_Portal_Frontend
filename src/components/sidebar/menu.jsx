@@ -15,7 +15,7 @@ const Menu = [
     // ]
   },
   {
-    path: '/widgets',
+    path: '/courses',
     icon: 'fab fa-simplybuilt',
     title: 'Courses'
   },

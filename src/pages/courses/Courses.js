@@ -5,23 +5,23 @@ import {
   PanelBody,
   PanelFooter
 } from '../../components/panel/panel.jsx';
-import DomainComponent from './DomainComponent.js';
+import CourseComponent from './CourseComponent.js';
 
-const KnowledgeDomain = () => {
+const Courses = () => {
   return (
     <Fragment>
       <div>
         <h1 className='page-header'>
-          Knowledge Domains <small></small>
+          Courses <small></small>
         </h1>
         <Panel>
-          <PanelHeader>DOMAINS</PanelHeader>
+          <PanelHeader>COURSES</PanelHeader>
           <PanelBody>
-            <DomainComponent />
+            <CourseComponent />
           </PanelBody>
           <PanelFooter>
             <button className='btn btn-primary btn-block m-b-5'>
-              Add Domain
+              Add Course
             </button>
           </PanelFooter>
         </Panel>
@@ -30,4 +30,4 @@ const KnowledgeDomain = () => {
   );
 };
 
-export default KnowledgeDomain;
+export default Courses;

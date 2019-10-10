@@ -5,6 +5,7 @@ import DashboardV1 from './../pages/dashboard/dashboard-v1.js';
 import DashboardV2 from './../pages/dashboard/dashboard-v2.js';
 import DashboardV3 from './../pages/dashboard/dashboard-v3.js';
 import KnowledgeDomain from './../pages/knowledgeDomain/KnowledgeDomain.js';
+import Courses from './../pages/courses/Courses.js';
 import EmailInbox from './../pages/email/email-inbox.js';
 import EmailCompose from './../pages/email/email-compose.js';
 import EmailDetail from './../pages/email/email-detail.js';
@@ -63,7 +64,7 @@ const routes = [
   {
     path: '/',
     exact: true,
-    component: () => <Redirect to='/dashboard/v2' />
+    component: () => <Redirect to='/dashboard' />
   },
   {
     path: '/dashboard',
@@ -85,6 +86,11 @@ const routes = [
     path: '/knowledgeDomains',
     title: 'Knowledge Domains',
     component: () => <KnowledgeDomain />
+  },
+  {
+    path: '/courses',
+    title: 'Courses',
+    component: () => <Courses />
   },
   {
     path: '/email/inbox',
