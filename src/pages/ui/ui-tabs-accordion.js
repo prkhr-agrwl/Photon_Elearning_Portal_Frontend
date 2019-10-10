@@ -59,14 +59,14 @@ class UITabsAccordion extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Tabs & Accordions</li>
 				</ol>
 				<h1 className="page-header">Tabs & Accordions <small>header small text goes here...</small></h1>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Nav tabs>
 							<NavItem>
 								<NavLink
@@ -142,7 +142,7 @@ class UITabsAccordion extends React.Component {
 							</TabPane>
 						</TabContent>
 						
-						<Nav pills>
+						<Nav className="mb-3" pills>
 							<NavItem>
 								<NavLink
 									className={classnames({ active: this.state.activePill === '1' })}
@@ -180,7 +180,7 @@ class UITabsAccordion extends React.Component {
 								</NavLink>
 							</NavItem>
 						</Nav>
-						<TabContent activeTab={this.state.activePill}>
+						<TabContent className="p-15 rounded bg-white mb-4" activeTab={this.state.activePill}>
 							<TabPane tabId="1">
 								<h3 className="m-t-10">Nav Pills Tab 1</h3>
 								<p>
@@ -231,13 +231,13 @@ class UITabsAccordion extends React.Component {
 							</TabPane>
 						</TabContent>
 					</div>
-					<div className="col-lg-6">
-						<div id="accordion" className="card-accordion">
+					<div className="col-xl-6">
+						<div id="accordion" className="accordion">
 							{
 								this.state.collapse.map((value, i) => (
-								<Card key={i}>
-									<CardHeader className={'card-header bg-black text-white pointer-cursor ' + (!value.collapse ? 'collapsed ' : '')} onClick={() => this.toggleCollapse(value.id)}>
-										Collapsible Group Item #{value.id}
+								<Card className="bg-dark text-white" key={i}>
+									<CardHeader className={'card-header bg-dark-darker text-white pointer-cursor ' + (!value.collapse ? 'collapsed ' : '')} onClick={() => this.toggleCollapse(value.id)}>
+										<i className="fa fa-circle f-s-8 mr-2 text-indigo"></i> Collapsible Group Item #{value.id}
 									</CardHeader>
 									<Collapse isOpen={value.collapse}>
 										<CardBody>

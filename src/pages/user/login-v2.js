@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { PageSettings } from './../../config/page-settings.js';
 
 class LoginV2 extends React.Component {
@@ -18,6 +18,7 @@ class LoginV2 extends React.Component {
 			bg6: false
 		}
 		this.selectBg = this.selectBg.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	selectBg(e, active, bg) {
@@ -43,6 +44,11 @@ class LoginV2 extends React.Component {
 		this.context.handleSetPageSidebar(true);
 		this.context.handleSetPageHeader(true);
 	}
+	
+	handleSubmit(event) {
+		event.preventDefault();
+    this.props.history.push('/dashboard/v3');
+  }
   
 	render() {
 		return (
@@ -63,7 +69,7 @@ class LoginV2 extends React.Component {
 						</div>
 					</div>
 					<div className="login-content">
-						<form method="POST" className="margin-bottom-0">
+						<form className="margin-bottom-0" onSubmit={this.handleSubmit}>
 							<div className="form-group m-b-20">
 								<input type="text" className="form-control form-control-lg" placeholder="Email Address" required />
 							</div>
@@ -99,4 +105,4 @@ class LoginV2 extends React.Component {
 	}
 }
 
-export default LoginV2;
+export default withRouter(LoginV2);

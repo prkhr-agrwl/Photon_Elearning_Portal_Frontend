@@ -6,7 +6,7 @@ class UISocialButtons extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Social Buttons</li>
@@ -14,11 +14,11 @@ class UISocialButtons extends React.Component {
 				<h1 className="page-header">Social Buttons <small>header small text goes here...</small></h1>
 				
 				<div className="row">
-					<div className="col-lg-8">
+					<div className="col-xl-8">
 						<Panel>
 							<PanelHeader>Social Buttons</PanelHeader>
 							<div className="table-responsive">
-								<table className="table table-striped table-condensed">
+								<table className="table table-striped table-condensed table-td-valign-middle mb-0">
 									<thead>
 										<tr>
 											<th>Buttons</th>
@@ -221,7 +221,7 @@ class UISocialButtons extends React.Component {
 							</div>
 						</Panel>
 					</div>
-					<div className="col-lg-4">
+					<div className="col-xl-4">
 						<div className="lead m-b-20">
 							<p className="m-b-5">Social Sign-In Buttons made in pure CSS based on Bootstrap and Font Awesome!</p>
 							<a href="https://lipis.github.io/bootstrap-social/" rel="noopener noreferrer" target="_blank" className="btn btn-sm btn-inverse">View Official Website <i className="fa fa-arrow-right m-l-5"></i></a>

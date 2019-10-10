@@ -23,7 +23,7 @@ class UIButtons extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Buttons</li>
@@ -31,7 +31,7 @@ class UIButtons extends React.Component {
 				<h1 className="page-header">Buttons <small>header small text goes here...</small></h1>
 				
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Buttons <span className="label label-success">NEW</span>
@@ -72,7 +72,7 @@ class UIButtons extends React.Component {
 '<button type="button" className="btn btn-link">Link</button>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Button Dropdowns
@@ -123,7 +123,7 @@ class UIButtons extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Button Sizes</PanelHeader>
 							<PanelBody>
@@ -140,7 +140,7 @@ class UIButtons extends React.Component {
 '<button className="btn btn-primary btn-xs">Extra Small</button>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Button State</PanelHeader>
 							<PanelBody>
@@ -163,7 +163,7 @@ class UIButtons extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Button with Icon</PanelHeader>
 							<PanelBody>
@@ -197,7 +197,7 @@ class UIButtons extends React.Component {
 '</button>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Button Group Vertical & Justified</PanelHeader>
 							<PanelBody>
@@ -251,7 +251,7 @@ class UIButtons extends React.Component {
 '</div>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Button Toolbars</PanelHeader>
 							<PanelBody>
@@ -286,7 +286,7 @@ class UIButtons extends React.Component {
 '</div>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Button Icon & Sizes</PanelHeader>
 							<PanelBody>

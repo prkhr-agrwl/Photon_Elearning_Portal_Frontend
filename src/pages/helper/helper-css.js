@@ -24,7 +24,7 @@ class HelperCSS extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/helper/css">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/helper/css">CSS Helper</Link></li>
 					<li className="breadcrumb-item active">Predefined CSS Class</li>
@@ -64,7 +64,7 @@ class HelperCSS extends React.Component {
           </NavItem>
           <NavItem>
             <NavLink className={classnames({ active: this.state.activeTab === '7' })} onClick={() => { this.toggle('7'); }}>
-            	<i className="fa fa-fw fa-lg fa-font text-gradient bg-gradient-purple"></i> <span className="d-none d-lg-inline">Text Color</span>
+            	<i className="fa fa-fw fa-lg fa-font text-gradient bg-gradient-indigo"></i> <span className="d-none d-lg-inline">Text Color</span>
             </NavLink>
           </NavItem>
         </Nav>
@@ -87,7 +87,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed m-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom">
 												<tbody>
@@ -284,7 +284,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0" width="25%">
 											<table className="table table-condensed m-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom table-no-border-left table-no-border-right table-no-border-bottom">
 												<tbody>
@@ -486,7 +486,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed m-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom table-no-border-left table-no-border-right table-no-border-bottom">
 												<tbody>
@@ -608,7 +608,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed m-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom table-no-border-left table-no-border-right table-no-border-bottom">
 												<tbody>
@@ -859,7 +859,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom">
 												<tbody>
@@ -1110,7 +1110,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
@@ -1543,7 +1543,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
@@ -1976,7 +1976,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
@@ -2230,7 +2230,7 @@ class HelperCSS extends React.Component {
 											</table>
 										</td>
 										<td className="p-0 bg-inverse">
-											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
+											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0 text-white">
 												<tbody>
 													<tr>
 														<td className="b-t-0 text-nowrap">
@@ -2314,7 +2314,7 @@ class HelperCSS extends React.Component {
 											</table>
 										</td>
 										<td className="p-0 bg-inverse">
-											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
+											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0 text-white">
 												<tbody>
 													<tr>
 														<td className="b-t-0 text-nowrap">
@@ -2391,7 +2391,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
@@ -2436,7 +2436,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
@@ -2659,7 +2659,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
@@ -2882,7 +2882,7 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
+									<tr className="bg-light">
 										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
@@ -3010,7 +3010,7 @@ class HelperCSS extends React.Component {
 											</table>
 										</td>
 										<td className="p-0 bg-inverse">
-											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
+											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0 text-white">
 												<tbody>
 													<tr>
 														<td className="b-t-0 text-nowrap"><i className="fa fa-lg fa-font text-silver-lighter m-r-5"></i> .text-silver-lighter</td>
@@ -3052,7 +3052,7 @@ class HelperCSS extends React.Component {
 											</table>
 										</td>
 										<td className="p-0 bg-inverse">
-											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
+											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0 text-white">
 												<tbody>
 													<tr>
 														<td className="b-t-0 text-nowrap"><i className="fa fa-lg fa-font text-white m-r-5"></i> .text-white</td>
@@ -3099,14 +3099,14 @@ class HelperCSS extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className="bg-silver-lighter">
-										<td className="p-0 bg-silver-lighter">
+									<tr className="bg-light">
+										<td className="p-0">
 											<table className="table table-condensed p-0 bg-none table-no-border-left table-no-border-right table-no-border-bottom m-b-0">
 												<tbody>
 													<tr>
 														<td className="b-t-0 text-center p-t-20 text-nowrap">
-															<i className="fa fa-5x fa-font text-gradient bg-gradient-purple"></i>
-															<i className="fa fa-5x fa-font text-gradient bg-gradient-blue"></i>
+															<i className="fa fa-5x fa-font text-gradient bg-gradient-cyan-blue"></i>
+															<i className="fa fa-5x fa-font text-gradient bg-gradient-orange-red"></i>
 															<i className="fa fa-5x fa-font text-gradient bg-gradient-black"></i>
 															<br /><br />
 															.text-gradient<br />

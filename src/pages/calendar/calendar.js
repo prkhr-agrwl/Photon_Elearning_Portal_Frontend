@@ -67,19 +67,19 @@ class Calendar extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/calendar">Home</Link></li>
 					<li className="breadcrumb-item active">Calendar</li>
 				</ol>
 				<h1 className="page-header">Calendar <small>header small text goes here...</small></h1>
-				<hr className="bg-grey-lighter" />
+				<hr />
 				
 				<FullCalendar
 					id = "myCalendar"
 					header = {{
-						left: 'prev,next today myCustomButton',
+						left: 'month,basicWeek,basicDay',
 						center: 'title',
-						right: 'month,basicWeek,basicDay'
+						right: 'prev,today,next'
 					}}
 					navLinks= {true}
 					editable= {true}

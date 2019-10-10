@@ -30,9 +30,9 @@ class TopMenuNavList extends React.Component {
 			<Route path={this.props.data.path} exact={this.props.data.exact} children={({ match }) => (
 				<li className={(match ? "active " : "") + (this.props.data.children ? "has-sub " : "")}>
 					{this.props.data.children ? (
-						<Link to={this.props.data.path} onClick={this.props.expand}>{ img } { icon } { badge } { title } { caret }</Link>
+						<Link to={this.props.data.path} onClick={this.props.expand}>{ img } { icon } { title } { caret } { badge }</Link>
 					):(
-						<Link to={this.props.data.path}>{ img } { icon } { badge } { title } { caret }</Link>
+						<Link to={this.props.data.path}>{ img } { icon } { title } { caret } { badge }</Link>
 					)}
 					{this.props.data.children && (
 						<ul className={"sub-menu " + (this.props.active ? 'd-block' : '')}>

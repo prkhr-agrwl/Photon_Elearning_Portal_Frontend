@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import NVD3Chart from 'react-nvd3';
 import d3 from 'd3';
 import Calendar from 'react-calendar';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Panel, PanelHeader, PanelFooter } from './../../components/panel/panel.jsx';
 
 class DashboardV2 extends React.Component {
@@ -124,60 +125,60 @@ class DashboardV2 extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/dashboard/v2">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/dashboard/v2">Dashboard</Link></li>
 					<li className="breadcrumb-item active">Dashboard v2</li>
 				</ol>
 				<h1 className="page-header">Dashboard v2 <small>header small text goes here...</small></h1>
 				<div className="row">
-					<div className="col-lg-3 col-md-6">
-						<div className="widget widget-stats bg-gradient-teal">
+					<div className="col-xl-3 col-md-6">
+						<div className="widget widget-stats bg-teal">
 							<div className="stats-icon stats-icon-lg"><i className="fa fa-globe fa-fw"></i></div>
 							<div className="stats-content">
 								<div className="stats-title">TODAY'S VISITS</div>
 								<div className="stats-number">7,842,900</div>
 								<div className="stats-progress progress">
-									<div className="progress-bar" style={{width: "70.1%"}}></div>
+									<div className="progress-bar" style={{width: '70.1%'}}></div>
 								</div>
 								<div className="stats-desc">Better than last week (70.1%)</div>
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-3 col-md-6">
-						<div className="widget widget-stats bg-gradient-blue">
+					<div className="col-xl-3 col-md-6">
+						<div className="widget widget-stats bg-blue">
 							<div className="stats-icon stats-icon-lg"><i className="fa fa-dollar-sign fa-fw"></i></div>
 							<div className="stats-content">
 								<div className="stats-title">TODAY'S PROFIT</div>
 								<div className="stats-number">180,200</div>
 								<div className="stats-progress progress">
-									<div className="progress-bar" style={{width: "40.5%"}}></div>
+									<div className="progress-bar" style={{width: '40.5%'}}></div>
 								</div>
 								<div className="stats-desc">Better than last week (40.5%)</div>
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-3 col-md-6">
-						<div className="widget widget-stats bg-gradient-purple">
+					<div className="col-xl-3 col-md-6">
+						<div className="widget widget-stats bg-indigo">
 							<div className="stats-icon stats-icon-lg"><i className="fa fa-archive fa-fw"></i></div>
 							<div className="stats-content">
 								<div className="stats-title">NEW ORDERS</div>
 								<div className="stats-number">38,900</div>
 								<div className="stats-progress progress">
-									<div className="progress-bar" style={{width: "76.3%"}}></div>
+									<div className="progress-bar" style={{width: '76.3%'}}></div>
 								</div>
 								<div className="stats-desc">Better than last week (76.3%)</div>
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-3 col-md-6">
-						<div className="widget widget-stats bg-gradient-black">
+					<div className="col-xl-3 col-md-6">
+						<div className="widget widget-stats bg-dark">
 							<div className="stats-icon stats-icon-lg"><i className="fa fa-comment-alt fa-fw"></i></div>
 							<div className="stats-content">
 								<div className="stats-title">NEW COMMENTS</div>
 								<div className="stats-number">3,988</div>
 								<div className="stats-progress progress">
-									<div className="progress-bar" style={{width: "54.9%"}}></div>
+									<div className="progress-bar" style={{width: '54.9%'}}></div>
 								</div>
 								<div className="stats-desc">Better than last week (54.9%)</div>
 							</div>
@@ -185,9 +186,9 @@ class DashboardV2 extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-8">
+					<div className="col-xl-8">
 						<div className="widget-chart with-sidebar inverse-mode">
-							<div className="widget-chart-content bg-black">
+							<div className="widget-chart-content bg-dark">
 								<h4 className="chart-title">
 									Visitors Analytics
 									<small>Where do our visitors come from</small>
@@ -196,22 +197,22 @@ class DashboardV2 extends React.Component {
 									<NVD3Chart type="stackedAreaChart" datum={this.areaChartData} height={260} options={this.areaChartOptions} />
 								</div>
 							</div>
-							<div className="widget-chart-sidebar bg-black-darker">
+							<div className="widget-chart-sidebar bg-dark-darker">
 								<div className="chart-number">
 									1,225,729
 									<small>Total visitors</small>
 								</div>
-								<div className="nvd3-inverse-mode" style={{height: '180px'}}>
+								<div className="flex-grow-1 d-flex align-items-center nvd3-inverse-mode">
 									<NVD3Chart type="pieChart" datum={this.donutChartData} height={180} options={this.donutChartOptions} x="label" y="value" />
 								</div>
 								<ul className="chart-legend f-s-11">
-									<li><i className="fa fa-circle fa-fw text-primary f-s-9 m-r-5 t-minus-1"></i> 34.0% <span>New Visitors</span></li>
-									<li><i className="fa fa-circle fa-fw text-success f-s-9 m-r-5 t-minus-1"></i> 56.0% <span>Return Visitors</span></li>
+									<li><i className="fa fa-circle fa-fw text-blue f-s-9 m-r-5 t-minus-1"></i> 34.0% <span>New Visitors</span></li>
+									<li><i className="fa fa-circle fa-fw text-teal f-s-9 m-r-5 t-minus-1"></i> 56.0% <span>Return Visitors</span></li>
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-4">
+					<div className="col-xl-4">
 						<Panel>
 							<PanelHeader noButton={true}>
 								Visitors Origin
@@ -220,29 +221,29 @@ class DashboardV2 extends React.Component {
 								<GoogleMapReact defaultCenter={this.map.center} defaultZoom={this.map.zoom}></GoogleMapReact>
 							</div>
 							<div className="list-group">
-								<Link to="/dashboard/v2" className="list-group-item list-group-item-inverse d-flex justify-content-between align-items-center text-ellipsis">
+								<Link to="/dashboard/v2" className="list-group-item list-group-item-inverse list-group-item-action d-flex justify-content-between align-items-center text-ellipsis">
 									1. United State 
-									<span className="badge f-w-500 bg-gradient-teal f-s-10">20.95%</span>
+									<span className="badge f-w-500 bg-teal f-s-10">20.95%</span>
 								</Link> 
-								<Link to="/dashboard/v2" className="list-group-item list-group-item-inverse d-flex justify-content-between align-items-center text-ellipsis">
+								<Link to="/dashboard/v2" className="list-group-item list-group-item-inverse list-group-item-action d-flex justify-content-between align-items-center text-ellipsis">
 									2. India
-									<span className="badge f-w-500 bg-gradient-blue f-s-10">16.12%</span>
+									<span className="badge f-w-500 bg-blue f-s-10">16.12%</span>
 								</Link>
-								<Link to="/dashboard/v2" className="list-group-item list-group-item-inverse d-flex justify-content-between align-items-center text-ellipsis">
+								<Link to="/dashboard/v2" className="list-group-item list-group-item-inverse list-group-item-action d-flex justify-content-between align-items-center text-ellipsis">
 									3. Mongolia
-									<span className="badge f-w-500 bg-gradient-grey f-s-10">14.99%</span>
+									<span className="badge f-w-500 bg-grey f-s-10">14.99%</span>
 								</Link>
 							</div>
 						</Panel>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-4">
-						<Panel className="bg-silver">
+					<div className="col-xl-4 col-lg-6">
+						<Panel className="bg-light">
 							<PanelHeader noButton={true}>
-								Chat History <span className="label bg-gradient-teal pull-right">4 message</span>
+								Chat History <span className="label bg-teal pull-right pt-0 pb-0">4 message</span>
 							</PanelHeader>
-							<div className="chats overflow-scroll" style={{height: '260px'}}>
+							<PerfectScrollbar className="chats" style={{height: '260px'}} options={{suppressScrollX: true}}>
 								<div className="left">
 									<span className="date-time">yesterday 11:23pm</span>
 									<Link to="/dashboard/v2" className="name">Sowse Bawdy</Link>
@@ -275,7 +276,7 @@ class DashboardV2 extends React.Component {
 										Nullam iaculis pharetra pharetra. Proin sodales tristique sapien mattis placerat.
 									</div>
 								</div>
-							</div>
+							</PerfectScrollbar>
 							<PanelFooter>
 								<form name="send_message_form" data-id="message-form">
 									<div className="input-group">
@@ -289,7 +290,7 @@ class DashboardV2 extends React.Component {
 							</PanelFooter>
 						</Panel>
 					</div>
-					<div className="col-lg-4">
+					<div className="col-xl-4 col-lg-6">
 						<Panel>
 							<PanelHeader noButton={true}>
 								Today's Schedule
@@ -298,21 +299,21 @@ class DashboardV2 extends React.Component {
 								<Calendar value={this.date} />
 							</div>
 							<div className="list-group">
-								<Link to="/dashboard/v2" className="list-group-item d-flex justify-content-between align-items-center text-ellipsis">
+								<Link to="/dashboard/v2" className="list-group-item list-group-item-action d-flex justify-content-between align-items-center text-ellipsis">
 									Sales Reporting
-									<span className="badge f-w-500 bg-gradient-teal f-s-10">9:00 am</span>
+									<span className="badge f-w-500 bg-teal f-s-10">9:00 am</span>
 								</Link> 
-								<Link to="/dashboard/v2" className="list-group-item d-flex justify-content-between align-items-center text-ellipsis">
+								<Link to="/dashboard/v2" className="list-group-item list-group-item-action d-flex justify-content-between align-items-center text-ellipsis">
 									Have a meeting with sales team
-									<span className="badge f-w-500 bg-gradient-blue f-s-10">2:45 pm</span>
+									<span className="badge f-w-500 bg-blue f-s-10">2:45 pm</span>
 								</Link>
 							</div>
 						</Panel>
 					</div>
-					<div className="col-lg-4">
+					<div className="col-xl-4 col-lg-6">
 						<Panel>
 							<PanelHeader noButton={true}>
-								New Registered Users <span className="pull-right label bg-gradient-teal">24 new users</span>
+								New Registered Users <span className="pull-right label bg-teal pt-0 pb-0">24 new users</span>
 							</PanelHeader>
 							<ul className="registered-users-list clearfix">
 								<li>

@@ -21,7 +21,7 @@ class FormElements extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/form/elements">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/form/elements">Form Stuff</Link></li>
 					<li className="breadcrumb-item active">Form Elements</li>
@@ -29,7 +29,7 @@ class FormElements extends React.Component {
 				<h1 className="page-header">Form Elements <small>header small text goes here...</small></h1>
 		
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Form Controls
@@ -131,7 +131,7 @@ class FormElements extends React.Component {
 							/>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Sizing
@@ -261,7 +261,7 @@ class FormElements extends React.Component {
 					
 				<h3 className="m-b-20">Checkboxes and Radios</h3>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								CSS Checkbox <span className="label label-success">NEW</span>
@@ -403,7 +403,7 @@ class FormElements extends React.Component {
 							/>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Checkboxes and Radios
@@ -514,7 +514,7 @@ class FormElements extends React.Component {
 
 				<h3 className="m-b-20">Input Group</h3>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Input Group
@@ -599,7 +599,7 @@ class FormElements extends React.Component {
 							/>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Input Group Sizing
@@ -634,13 +634,13 @@ class FormElements extends React.Component {
 				
 				<h3 className="m-b-20">Form Style</h3>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Default Style
 							</PanelHeader>
 							<PanelBody>
-								<form action="/" method="POST">
+								<form action="" method="POST">
 									<fieldset>
 										<legend className="m-b-15">Legend</legend>
 										<div className="form-group">
@@ -668,13 +668,13 @@ class FormElements extends React.Component {
 							/>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Form Horizontal
 							</PanelHeader>
 							<PanelBody>
-								<form action="/" method="POST">
+								<form action="" method="POST">
 									<fieldset>
 										<legend className="m-b-15">Legend</legend>
 										<div className="form-group row m-b-15">
@@ -724,7 +724,7 @@ class FormElements extends React.Component {
 								Inline Form
 							</PanelHeader>
 							<PanelBody>
-								<form className="form-inline" action="/" method="POST">
+								<form className="form-inline" action="" method="POST">
 									<div className="form-group m-r-10">
 										<input type="email" className="form-control" id="exampleInputEmail2" placeholder="Enter email" />
 									</div>

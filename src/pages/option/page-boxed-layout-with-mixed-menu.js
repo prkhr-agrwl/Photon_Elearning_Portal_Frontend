@@ -19,7 +19,7 @@ class PageBoxedLayoutWithMixedMenu extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/page-option/boxed-layout-with-mixed-menu">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/page-option/boxed-layout-with-mixed-menu">Page Options</Link></li>
 					<li className="breadcrumb-item active">Boxed Layout with Mixed Menu</li>

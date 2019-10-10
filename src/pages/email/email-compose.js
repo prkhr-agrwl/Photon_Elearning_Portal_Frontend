@@ -3,6 +3,8 @@ import ReactTags from 'react-tag-autocomplete';
 import ReactQuill from 'react-quill';
 import { Link } from 'react-router-dom';
 import { PageSettings } from './../../config/page-settings.js';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 class EmailCompose extends React.Component {
 	static contextType = PageSettings;
@@ -11,10 +13,12 @@ class EmailCompose extends React.Component {
 		super(props);
 
 		this.toggle = this.toggle.bind(this);
+		this.toggleMobileEmailNav = this.toggleMobileEmailNav.bind(this);
 		this.state = {
 			dropdownOpen: false,
 			cc: false,
 			bcc: false,
+			isMobileEmailNavOn: false,
 			tags: [
 				{ id: 1, name: 'bootstrap@gmail.com' },
 				{ id: 2, name: 'google@gmail.com' }
@@ -100,21 +104,32 @@ class EmailCompose extends React.Component {
 	handleChange(value) {
 		this.setState({ text: value })
 	}
+	
+	toggleMobileEmailNav() {
+		this.setState(state => ({
+      isMobileEmailNavOn: !state.isMobileEmailNavOn
+    }));
+	}
   
 	render() {
 		return (
-			<div className="vertical-box with-grid inbox">
-				<div className="vertical-box-column width-200 bg-silver hidden-xs">
+			<div className="vertical-box with-grid inbox bg-light">
+				<div className="vertical-box-column width-200 hidden-xs">
 					<div className="vertical-box">
-						<div className="wrapper bg-silver text-center">
-							<Link to="/email/compose" className="btn btn-inverse p-l-40 p-r-40 btn-sm">
-								Compose
-							</Link>
+						<div className="wrapper text-center">
+							<div className="d-flex align-items-center justify-content-center">
+								<button onClick={this.toggleMobileEmailNav} className="btn btn-inverse btn-sm mr-auto d-block d-lg-none">
+									<i className="fa fa-cog"></i>
+								</button>
+								<Link to="/email/compose" className="btn btn-inverse p-l-40 p-r-40 btn-sm">
+									Compose
+								</Link>
+							</div>
 						</div>
-						<div className="vertical-box-row">
+						<div className={"vertical-box-row collapse d-lg-table-row " + (this.state.isMobileEmailNavOn ? 'show' : '') }>
 							<div className="vertical-box-cell">
 								<div className="vertical-box-inner-cell">
-									<div data-scrollbar="true" data-height="100%">
+									<PerfectScrollbar className="height-full" options={{suppressScrollX: true}}>
 										<div className="wrapper p-0">
 											<div className="nav-title"><b>FOLDERS</b></div>
 											<ul className="nav nav-inbox">
@@ -133,37 +148,39 @@ class EmailCompose extends React.Component {
 												<li><Link to="/email/compose"><i className="fa fa-fw f-s-10 m-r-5 fa-circle text-danger"></i> Client</Link></li>
 											</ul>
 										</div>
-									</div>
+									</PerfectScrollbar>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className="vertical-box-column bg-white">
+				<div className="vertical-box-column">
 					<div className="vertical-box">
-						<div className="wrapper bg-silver">
+						<div className="wrapper">
 							<span className="btn-group m-r-5">
-								<Link to="/email/compose" className="btn btn-white btn-sm"><i className="fa fa-envelope f-s-14 m-r-3 m-r-xs-0 t-plus-1"></i> <span className="hidden-xs">Send</span></Link>
-								<Link to="/email/compose" className="btn btn-white btn-sm"><i className="fa fa-paperclip f-s-14 m-r-3 m-r-xs-0 t-plus-1"></i> <span className="hidden-xs">Attach</span></Link>
+								<Link to="/email/compose" className="btn btn-white btn-sm"><i className="fa fa-envelope m-r-3 m-r-xs-0"></i> <span className="hidden-xs">Send</span></Link>
+								<Link to="/email/compose" className="btn btn-white btn-sm"><i className="fa fa-paperclip m-r-3 m-r-xs-0"></i> <span className="hidden-xs">Attach</span></Link>
 							</span>
-							<span className="dropdown">
-								<Link to="/email/compose" className="btn btn-white btn-sm" data-toggle="dropdown"><i className="fa fa-ellipsis-h f-s-14 t-plus-1"></i></Link>
-								<ul className="dropdown-menu dropdown-menu-left">
-									<li><Link to="/email/compose">Save draft</Link></li>
-									<li><Link to="/email/compose">Show From</Link></li>
-									<li><Link to="/email/compose">Check names</Link></li>
-									<li><Link to="/email/compose">Switch to plain text</Link></li>
-									<li><Link to="/email/compose">Check for accessibility issues</Link></li>
-								</ul>
-							</span>
+							<ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+								<DropdownToggle color="white btn-sm">
+									<i className="fa fa-ellipsis-h"></i>
+								</DropdownToggle>
+								<DropdownMenu>
+									<DropdownItem>Save draft</DropdownItem>
+									<DropdownItem>Show From</DropdownItem>
+									<DropdownItem>Check names</DropdownItem>
+									<DropdownItem>Switch to plain text</DropdownItem>
+									<DropdownItem>Check for accessibility issues</DropdownItem>
+								</DropdownMenu>
+							</ButtonDropdown>
 							<span className="pull-right">
-								<Link to="/email/compose" className="btn btn-white btn-sm"><i className="fa fa-times f-s-14 m-r-3 m-r-xs-0 t-plus-1"></i> <span className="hidden-xs">Discard</span></Link>
+								<Link to="/email/compose" className="btn btn-white btn-sm"><i className="fa fa-times m-r-3 m-r-xs-0"></i> <span className="hidden-xs">Discard</span></Link>
 							</span>
 						</div>
 						<div className="vertical-box-row bg-white">
 							<div className="vertical-box-cell">
 								<div className="vertical-box-inner-cell">
-									<div className="overflow-scroll height-full p-15">
+									<PerfectScrollbar className="height-full p-15" options={{suppressScrollX: true}}>
 										<form action="/" method="POST" name="email_to_form">
 											<div className="email-to">
 												<span className="float-right-link">
@@ -198,11 +215,11 @@ class EmailCompose extends React.Component {
 												<ReactQuill value={this.state.text} onChange={this.handleChange} style={{ height: this.state.editor.height + 'px', marginBottom: '20px' }} />
 											</div>
 										</form>
-									</div>
+									</PerfectScrollbar>
 								</div>
 							</div>
 						</div>
-						<div className="wrapper bg-silver text-right">
+						<div className="wrapper text-right">
 							<button type="submit" className="btn btn-white p-l-40 p-r-40 m-r-5">Discard</button>
 							<button type="submit" className="btn btn-primary p-l-40 p-r-40">Send</button>
 						</div>

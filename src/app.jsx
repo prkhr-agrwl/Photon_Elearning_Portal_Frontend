@@ -55,55 +55,6 @@ class App extends React.Component {
 				pageSidebarTransparent: value
 			}));
 		}
-		this.handleSidebarOnMouseOver = (e, menu) => {
-			if (this.state.pageSidebarMinify) {
-				if (menu.children) {
-					clearTimeout(floatSubMenuRemove);
-			
-					this.setState(state => ({
-						pageFloatSubMenu: menu,
-						pageFloatSubMenuActive: true
-					}));
-			
-					const windowHeight = window.innerHeight;
-					const targetHeight = document.getElementById('float-sub-menu').offsetHeight;
-					const targetTop = e.currentTarget.getBoundingClientRect().top;
-					const top = ((windowHeight - targetTop) > targetHeight) ? targetTop : 'auto';
-					const left = (e.currentTarget.getBoundingClientRect().left + document.getElementById('sidebar').offsetWidth) + 'px';
-					const bottom = ((windowHeight - targetTop) > targetHeight) ? 'auto' : '0';
-					const arrowTop = ((windowHeight - targetTop) > targetHeight) ? '20px' : 'auto';
-					const arrowBottom = ((windowHeight - targetTop) > targetHeight) ? 'auto' : ((windowHeight - targetTop) - 21) + 'px';
-					const lineTop = ((windowHeight - targetTop) > targetHeight) ? '20px' : 'auto';
-					const lineBottom = ((windowHeight - targetTop) > targetHeight) ? 'auto' : ((windowHeight - targetTop) - 21) + 'px';
-			
-					this.setState(state => ({
-						pageFloatSubMenuTop: top,
-						pageFloatSubMenuLeft: left,
-						pageFloatSubMenuBottom: bottom,
-						pageFloatSubMenuLineTop: lineTop,
-						pageFloatSubMenuLineBottom: lineBottom,
-						pageFloatSubMenuArrowTop: arrowTop,
-						pageFloatSubMenuArrowBottom: arrowBottom
-					}));
-				} else {
-					floatSubMenuRemove = setTimeout(() => {
-						this.setState(state => ({
-							pageFloatSubMenu: '',
-							pageFloatSubMenuActive: false
-						}));
-					}, floatSubMenuRemoveTime);
-				}
-			}
-		}
-		this.handleSidebarOnMouseOut = (e) => {
-			if (this.state.pageSidebarMinify) {
-				floatSubMenuRemove = setTimeout(() => {
-					this.setState(state => ({
-						pageFloatSubMenuActive: false
-					}));
-				}, floatSubMenuRemoveTime);
-			}
-		}
 		
 		this.toggleRightSidebar = (e) => {
 			e.preventDefault();
@@ -124,9 +75,11 @@ class App extends React.Component {
 		}
 		
 		var floatSubMenuRemove;
+		var floatSubMenuCalculate;
 		var floatSubMenuRemoveTime = 250;
 		this.handleFloatSubMenuOnMouseOver = (e) => {
 			clearTimeout(floatSubMenuRemove);
+			clearTimeout(floatSubMenuCalculate);
 		}
 		this.handleFloatSubMenuOnMouseOut = (e) => {
 			floatSubMenuRemove = setTimeout(() => {
@@ -134,6 +87,99 @@ class App extends React.Component {
 					pageFloatSubMenuActive: false
 				}));
 			}, floatSubMenuRemoveTime);
+		}
+		this.handleSidebarOnMouseOver = (e, menu) => {
+			if (this.state.pageSidebarMinify) {
+				if (menu.children) {
+					var left = (document.getElementById('sidebar').offsetWidth + document.getElementById('sidebar').offsetLeft) + 'px';
+					
+					clearTimeout(floatSubMenuRemove);
+					clearTimeout(floatSubMenuCalculate);
+			
+					this.setState(state => ({
+						pageFloatSubMenu: menu,
+						pageFloatSubMenuActive: true,
+						pageFloatSubMenuLeft: left
+					}));
+					
+					var offset = e.currentTarget.offsetParent.getBoundingClientRect();
+					
+					floatSubMenuCalculate = setTimeout(() => {
+						var targetTop = offset.top;
+						var windowHeight = window.innerHeight;
+						var targetHeight = document.querySelector('.float-sub-menu-container').offsetHeight;
+						var top, bottom, arrowTop, arrowBottom, lineTop, lineBottom;
+						
+						if ((windowHeight - targetTop) > targetHeight) {
+							top = offset.top + 'px';
+							bottom = 'auto';
+							arrowTop = '20px';
+							arrowBottom = 'auto';
+							lineTop = '20px';
+							lineBottom = 'auto';
+						} else {
+							var aBottom = (windowHeight - targetTop) - 21;
+							top = 'auto';
+							bottom = '0';
+							arrowTop = 'auto';
+							arrowBottom = aBottom + 'px';
+							lineTop = '20px';
+							lineBottom = aBottom + 'px';
+						}
+						
+						this.setState(state => ({
+							pageFloatSubMenuTop: top,
+							pageFloatSubMenuBottom: bottom,
+							pageFloatSubMenuLineTop: lineTop,
+							pageFloatSubMenuLineBottom: lineBottom,
+							pageFloatSubMenuArrowTop: arrowTop,
+							pageFloatSubMenuArrowBottom: arrowBottom,
+							pageFloatSubMenuOffset: offset
+						}));
+					}, 0);
+					
+				} else {
+					floatSubMenuRemove = setTimeout(() => {
+						this.setState(state => ({
+							pageFloatSubMenu: '',
+							pageFloatSubMenuActive: false
+						}));
+					}, floatSubMenuRemoveTime);
+				}
+			}
+		}
+		this.handleSidebarOnMouseOut = (e) => {
+			if (this.state.pageSidebarMinify) {
+				floatSubMenuRemove = setTimeout(() => {
+					this.setState(state => ({
+						pageFloatSubMenuActive: false
+					}));
+				}, floatSubMenuRemoveTime);
+			}
+		}
+		this.handleFloatSubMenuClick = () => {
+			if (this.state.pageSidebarMinify) {
+				const windowHeight = window.innerHeight;
+				const targetHeight = document.getElementById('float-sub-menu').offsetHeight;
+				const targetTop = this.state.pageFloatSubMenuOffset.top;
+				const top = ((windowHeight - targetTop) > targetHeight) ? targetTop : 'auto';
+				const left = (this.state.pageFloatSubMenuOffset.left + document.getElementById('sidebar').offsetWidth) + 'px';
+				const bottom = ((windowHeight - targetTop) > targetHeight) ? 'auto' : '0';
+				const arrowTop = ((windowHeight - targetTop) > targetHeight) ? '20px' : 'auto';
+				const arrowBottom = ((windowHeight - targetTop) > targetHeight) ? 'auto' : ((windowHeight - targetTop) - 21) + 'px';
+				const lineTop = ((windowHeight - targetTop) > targetHeight) ? '20px' : 'auto';
+				const lineBottom = ((windowHeight - targetTop) > targetHeight) ? 'auto' : ((windowHeight - targetTop) - 21) + 'px';
+			
+				this.setState(state => ({
+					pageFloatSubMenuTop: top,
+					pageFloatSubMenuLeft: left,
+					pageFloatSubMenuBottom: bottom,
+					pageFloatSubMenuLineTop: lineTop,
+					pageFloatSubMenuLineBottom: lineBottom,
+					pageFloatSubMenuArrowTop: arrowTop,
+					pageFloatSubMenuArrowBottom: arrowBottom
+				}));
+			}
 		}
 		
 		this.handleSetPageContent = (value) => {
@@ -154,6 +200,11 @@ class App extends React.Component {
 		this.handleSetPageContentFullWidth = (value) => {
 			this.setState(state => ({
 				pageContentFullWidth: value
+			}));
+		}
+		this.handleSetPageContentInverseMode = (value) => {
+			this.setState(state => ({
+				pageContentInverseMode: value
 			}));
 		}
 		
@@ -183,6 +234,12 @@ class App extends React.Component {
 				pageTopMenu: value
 			}));
 		}
+		this.toggleMobileTopMenu = (e) => {
+			e.preventDefault();
+			this.setState(state => ({
+				pageMobileTopMenu: !this.state.pageMobileTopMenu
+			}));
+		}
 		this.handleSetPageTwoSidebar = (value) => {
 			this.setState(state => ({
 				pageTwoSidebar: value
@@ -207,6 +264,7 @@ class App extends React.Component {
 			pageHeader: true,
 			pageheaderMegaMenu: false,
 			pageHeaderLanguageBar: false,
+			hasScroll: false,
 			handleSetPageHeader: this.handleSetPageHeader,
 			handleSetPageHeaderLanguageBar: this.handleSetPageHeaderLanguageBar,
 			handleSetPageHeaderMegaMenu: this.handleSetPageHeaderMegaMenu,
@@ -236,22 +294,28 @@ class App extends React.Component {
 			pageFloatSubMenuLineBottom: 'auto',
 			pageFloatSubMenuArrowTop: 'auto',
 			pageFloatSubMenuArrowBottom: 'auto',
+			pageFloatSubMenuOffset: '',
 			handleFloatSubMenuOnMouseOver: this.handleFloatSubMenuOnMouseOver,
 			handleFloatSubMenuOnMouseOut: this.handleFloatSubMenuOnMouseOut,
+			handleFloatSubMenuClick: this.handleFloatSubMenuClick,
 			
 			pageContent: true,
 			pageContentClass: '',
 			pageContentFullHeight: false,
 			pageContentFullWidth: false,
+			pageContentInverseMode: false,
 			handleSetPageContent: this.handleSetPageContent,
 			handleSetPageContentClass: this.handleSetPageContentClass,
 			handleSetPageContentFullHeight: this.handleSetPageContentFullHeight,
 			handleSetPageContentFullWidth: this.handleSetPageContentFullWidth,
+			handleSetPageContentInverseMode: this.handleSetPageContentInverseMode,
 			
 			pageFooter: false,
 			handleSetPageFooter: this.handleSetPageFooter,
 			
 			pageTopMenu: false,
+			pageMobileTopMenu: false,
+			toggleMobileTopMenu: this.toggleMobileTopMenu,
 			handleSetPageTopMenu: this.handleSetPageTopMenu,
 			
 			pageTwoSidebar: false,
@@ -269,6 +333,26 @@ class App extends React.Component {
 		};
 	}
 	
+	componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
+  
+  handleScroll = () => {
+  	if (window.scrollY > 0) {
+  		this.setState(state => ({
+				hasScroll: true
+			}));
+  	} else {
+  		this.setState(state => ({
+				hasScroll: false
+			}));
+  	}
+  }
+	
 	render() {
 		return (
 			<PageSettings.Provider value={this.state}>
@@ -285,7 +369,8 @@ class App extends React.Component {
 					(this.state.pageContentFullHeight ? 'page-content-full-height ' : '') + 
 					(this.state.pageTwoSidebar ? 'page-with-two-sidebar ' : '') + 
 					(this.state.pageRightSidebarCollapsed ? 'page-right-sidebar-collapsed ' : '') + 
-					(this.state.pageMobileRightSidebarToggled ? 'page-right-sidebar-toggled ' : '')
+					(this.state.pageMobileRightSidebarToggled ? 'page-right-sidebar-toggled ' : '') + 
+					(this.state.hasScroll ? 'has-scroll ' : '')
 				}>
 					{this.state.pageHeader && (<Header />)}
 					{this.state.pageSidebar && (<Sidebar />)}

@@ -30,7 +30,7 @@ class ExtraSearch extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/extra/search">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/extra/search">Extra</Link></li>
 					<li className="breadcrumb-item active">Search Results</li>
@@ -41,9 +41,9 @@ class ExtraSearch extends React.Component {
 						<div className="result-container">
 							<InputGroup size="lg" className="m-b-20">
 								<Input placeholder="Enter keywords here..." type="text" className="input-white" />
-								<InputGroupButtonDropdown addonType="prepend" isOpen={this.state.splitButtonOpen} toggle={this.toggleSplit}>
+								<InputGroupButtonDropdown addonType="append" isOpen={this.state.splitButtonOpen} toggle={this.toggleSplit}>
 									<Button color="primary"><i className="fa fa-search fa-fw"></i> Search</Button>
-									<DropdownToggle color="primary" className="no-caret" split>
+									<DropdownToggle color="primary" split>
 										<i className="fa fa-cog fa-fw"></i>
 									</DropdownToggle>
 									<DropdownMenu>
@@ -55,34 +55,38 @@ class ExtraSearch extends React.Component {
 									</DropdownMenu>
 								</InputGroupButtonDropdown>
 							</InputGroup>
-							<UncontrolledButtonDropdown className="pull-left">
-								<DropdownToggle color="white" className="btn-white-without-border" caret>
-									Filters by
-								</DropdownToggle>
-								<DropdownMenu>
-									<DropdownItem>Posted Date</DropdownItem>
-									<DropdownItem>View Count</DropdownItem>
-									<DropdownItem>Total View</DropdownItem>
-									<DropdownItem divider />
-									<DropdownItem>Location</DropdownItem>
-								</DropdownMenu>
-							</UncontrolledButtonDropdown>
-							<div className="btn-group m-l-10 m-b-20">
-								<Link to="/extra/search" className="btn btn-white btn-white-without-border"><i className="fa fa-list"></i></Link>
-								<Link to="/extra/search" className="btn btn-white btn-white-without-border"><i className="fa fa-th"></i></Link>
-								<Link to="/extra/search" className="btn btn-white btn-white-without-border"><i className="fa fa-th-large"></i></Link>
+							<div className="d-block d-md-flex align-items-center mb-3">
+								<UncontrolledButtonDropdown className="mr-2">
+									<DropdownToggle color="white" className="btn-white-without-border" caret>
+										Filters by
+									</DropdownToggle>
+									<DropdownMenu>
+										<DropdownItem>Posted Date</DropdownItem>
+										<DropdownItem>View Count</DropdownItem>
+										<DropdownItem>Total View</DropdownItem>
+										<DropdownItem divider />
+										<DropdownItem>Location</DropdownItem>
+									</DropdownMenu>
+								</UncontrolledButtonDropdown>
+								<div className="btn-group">
+									<Link to="/extra/search" className="btn btn-white btn-white-without-border"><i className="fa fa-list"></i></Link>
+									<Link to="/extra/search" className="btn btn-white btn-white-without-border"><i className="fa fa-th"></i></Link>
+									<Link to="/extra/search" className="btn btn-white btn-white-without-border"><i className="fa fa-th-large"></i></Link>
+								</div>
+								<div className="ml-auto d-none d-lg-block">
+									<ul className="pagination mb-0">
+										<li className="page-item disabled"><Link to="/extra/search" className="page-link">«</Link></li>
+										<li className="page-item active"><Link to="/extra/search" className="page-link">1</Link></li>
+										<li className="page-item"><Link to="/extra/search" className="page-link">2</Link></li>
+										<li className="page-item"><Link to="/extra/search" className="page-link">3</Link></li>
+										<li className="page-item"><Link to="/extra/search" className="page-link">4</Link></li>
+										<li className="page-item"><Link to="/extra/search" className="page-link">5</Link></li>
+										<li className="page-item"><Link to="/extra/search" className="page-link">6</Link></li>
+										<li className="page-item"><Link to="/extra/search" className="page-link">7</Link></li>
+										<li className="page-item"><Link to="/extra/search" className="page-link">»</Link></li>
+									</ul>
+								</div>
 							</div>
-							<ul className="pagination pull-right m-t-3 m-b-20">
-								<li className="disabled"><Link to="/extra/search" className="page-link">«</Link></li>
-								<li className="active"><Link to="/extra/search" className="page-link">1</Link></li>
-								<li className="page-item"><Link to="/extra/search" className="page-link">2</Link></li>
-								<li className="page-item"><Link to="/extra/search" className="page-link">3</Link></li>
-								<li className="page-item"><Link to="/extra/search" className="page-link">4</Link></li>
-								<li className="page-item"><Link to="/extra/search" className="page-link">5</Link></li>
-								<li className="page-item"><Link to="/extra/search" className="page-link">6</Link></li>
-								<li className="page-item"><Link to="/extra/search" className="page-link">7</Link></li>
-								<li className="page-item"><Link to="/extra/search" className="page-link">»</Link></li>
-							</ul>
 							<ul className="result-list">
 								<li>
 									<Link to="/extra/search" className="result-image" style={{backgroundImage: 'url(/assets/img/gallery/gallery-51.jpg)'}}></Link>
@@ -213,8 +217,8 @@ class ExtraSearch extends React.Component {
 							</ul>
 							<div className="clearfix m-t-20">
 								<ul className="pagination pull-right">
-									<li className="disabled"><Link to="/extra/search" className="page-link">«</Link></li>
-									<li className="active"><Link to="/extra/search" className="page-link">1</Link></li>
+									<li className="page-item disabled"><Link to="/extra/search" className="page-link">«</Link></li>
+									<li className="page-item active"><Link to="/extra/search" className="page-link">1</Link></li>
 									<li className="page-item"><Link to="/extra/search" className="page-link">2</Link></li>
 									<li className="page-item"><Link to="/extra/search" className="page-link">3</Link></li>
 									<li className="page-item"><Link to="/extra/search" className="page-link">4</Link></li>

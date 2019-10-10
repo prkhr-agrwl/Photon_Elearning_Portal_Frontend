@@ -6,7 +6,7 @@ class PageBlank extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/page-option/blank">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/page-option/blank">Page Options</Link></li>
 					<li className="breadcrumb-item active">Blank Page</li>

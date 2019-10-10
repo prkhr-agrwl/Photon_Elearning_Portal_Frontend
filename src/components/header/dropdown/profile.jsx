@@ -20,7 +20,7 @@ class DropdownProfile extends React.Component {
 	render() {
 		return (
 			<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="dropdown navbar-user" tag="li">
-				<DropdownToggle className="dropdown-toggle" tag="a">
+				<DropdownToggle tag="a">
 					<img src="../assets/img/user/user-13.jpg" alt="" /> 
 					<span className="d-none d-md-inline">Adam Schwartz</span> <b className="caret"></b>
 				</DropdownToggle>

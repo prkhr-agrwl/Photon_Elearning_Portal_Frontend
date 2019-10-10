@@ -99,7 +99,7 @@ class FormPlugins extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/form/plugins">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/form/plugins">Form Stuff</Link></li>
 					<li className="breadcrumb-item active">Form Plugins</li>
@@ -107,7 +107,7 @@ class FormPlugins extends React.Component {
 				<h1 className="page-header">Form Plugins <small>header small text goes here...</small></h1>
 				
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Bootstrap Date Time Picker
@@ -115,20 +115,20 @@ class FormPlugins extends React.Component {
 							<PanelBody className="panel-form">
 								<form className="form-horizontal form-bordered">
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Default Date Time</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Default Date Time</label>
+										<div className="col-lg-8">
 											<DateTime inputProps={{ placeholder: 'Datepicker' }} closeOnSelect={true} />
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Select Time</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Select Time</label>
+										<div className="col-lg-8">
 											<DateTime dateFormat={false} inputProps={{ placeholder: 'Timepicker' }} />
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Range Pickers</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Range Pickers</label>
+										<div className="col-lg-8">
 											<div className="row row-space-10">
 												<div className="col-6">
 													<DateTime isValidDate={ this.minDateRange } inputProps={{ placeholder: 'Min Date' }} closeOnSelect={true} onChange={ this.minDateChange } />
@@ -150,8 +150,8 @@ class FormPlugins extends React.Component {
 							<PanelBody className="panel-form">
 								<form className="form-horizontal form-bordered">
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">React Select Dropdown</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">React Select Dropdown</label>
+										<div className="col-lg-8">
 											<Select options={this.selectOptions} />
 										</div>
 									</div>
@@ -166,14 +166,14 @@ class FormPlugins extends React.Component {
 							<PanelBody className="panel-form">
 								<form className="form-horizontal form-bordered">
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Default Datepicker</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Default Datepicker</label>
+										<div className="col-lg-8">
 											<DatePicker selected={this.state.startDate} onChange={this.handleChange} className="form-control" />
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Inline Datepicker</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Inline Datepicker</label>
+										<div className="col-lg-8">
 											<DatePicker inline selected={this.state.startDate} onChange={this.handleChange} />
 										</div>
 									</div>
@@ -187,8 +187,8 @@ class FormPlugins extends React.Component {
 							<PanelBody className="panel-form">
 								<form className="form-horizontal form-bordered">
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Default Input Tag</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Default Input Tag</label>
+										<div className="col-lg-8">
 											<ReactTags tags={this.state.tags} suggestions={this.state.suggestions} handleDelete={this.handleDelete.bind(this)} handleAddition={this.handleAddition.bind(this)} />
 										</div>
 									</div>
@@ -196,7 +196,7 @@ class FormPlugins extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								React Input Mask
@@ -204,38 +204,38 @@ class FormPlugins extends React.Component {
 							<PanelBody className="panel-form">
 								<form className="form-horizontal form-bordered">
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Date</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Date</label>
+										<div className="col-lg-8">
 											<InputMask mask="9999/99/99" className="form-control" placeholder="yyyy/mm/dd"></InputMask>
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Phone</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Phone</label>
+										<div className="col-lg-8">
 											<InputMask mask="(999) 999-999" className="form-control" placeholder="(999) 999-9999"></InputMask>
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Tax ID</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Tax ID</label>
+										<div className="col-lg-8">
 											<InputMask mask="99-999999" className="form-control" placeholder="99-9999999"></InputMask>
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Product Key</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Product Key</label>
+										<div className="col-lg-8">
 											<InputMask mask="a\*-999-a999" className="form-control" placeholder="a*-999-a999"></InputMask>
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">SSN</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">SSN</label>
+										<div className="col-lg-8">
 											<InputMask mask="999/99/9999" className="form-control" placeholder="999/99/9999"></InputMask>
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">SSN</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">SSN</label>
+										<div className="col-lg-8">
 											<InputMask mask="AAA-1111-A" className="form-control" placeholder="AAA-9999-A"></InputMask>
 										</div>
 									</div>
@@ -250,8 +250,8 @@ class FormPlugins extends React.Component {
 							<PanelBody className="panel-form">
 								<form className="form-horizontal form-bordered">
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Sketch Type Colorpicker</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Sketch Type Colorpicker</label>
+										<div className="col-lg-8">
 											<UncontrolledDropdown>
 												<div className="input-group">
 													<input type="text" className="form-control bg-white" readOnly value={this.state.sketchBackgroundColor} />
@@ -270,8 +270,8 @@ class FormPlugins extends React.Component {
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Chrome Type Colorpicker</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Chrome Type Colorpicker</label>
+										<div className="col-lg-8">
 											<UncontrolledDropdown>
 												<div className="input-group">
 													<input type="text" className="form-control bg-white" readOnly value={this.state.chromeBackgroundColor} />
@@ -300,21 +300,21 @@ class FormPlugins extends React.Component {
 							<PanelBody className="panel-form">
 								<form className="form-horizontal form-bordered">
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Default Slider</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Default Slider</label>
+										<div className="col-lg-8">
 											<Slider min={0} max={20} defaultValue={3} handle={this.handleSlider} />
 											<vue-slider v-bind="sliderDefault" v-model="sliderDefault.value"></vue-slider>
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Slider with fixed values</label>
-										<div className="col-md-8 overflow-hidden">
+										<label className="col-lg-4 col-form-label">Slider with fixed values</label>
+										<div className="col-lg-8 overflow-hidden">
 											<Slider min={20} defaultValue={20} marks={{ 20: 20, 40: 40, 100: 100 }} step={null} />
 										</div>
 									</div>
 									<div className="form-group row">
-										<label className="col-md-4 col-form-label">Range with custom handle</label>
-										<div className="col-md-8">
+										<label className="col-lg-4 col-form-label">Range with custom handle</label>
+										<div className="col-lg-8">
 											<Range min={0} max={20} defaultValue={[3, 10]} tipFormatter={value => `${value}%`} />
 										</div>
 									</div>

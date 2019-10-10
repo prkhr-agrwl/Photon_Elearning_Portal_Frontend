@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageSettings } from './../../config/page-settings.js';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 class PageFullHeight extends React.Component {
 	static contextType = PageSettings;
@@ -25,7 +26,7 @@ class PageFullHeight extends React.Component {
 						<div className="vertical-box-row bg-blue text-white">
 							<div className="vertical-box-cell">
 								<div className="vertical-box-inner-cell">
-									<div className="wrapper height-full overflow-scroll">
+									<PerfectScrollbar className="wrapper height-full" options={{suppressScrollX: true}}>
 										Content Area with scrollbar. Try to scroll down.
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
@@ -55,7 +56,7 @@ class PageFullHeight extends React.Component {
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
 										You got the bottom
-									</div>
+									</PerfectScrollbar>
 								</div>
 							</div>
 						</div>
@@ -69,7 +70,7 @@ class PageFullHeight extends React.Component {
 						<div className="vertical-box-row">
 							<div className="vertical-box-cell">
 								<div className="vertical-box-inner-cell">
-									<div className="wrapper height-full overflow-scroll">
+									<PerfectScrollbar className="wrapper height-full" options={{suppressScrollX: true}}>
 										Content Area with scrollbar. Try to scroll down.
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
@@ -99,7 +100,7 @@ class PageFullHeight extends React.Component {
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
 										You got the bottom
-									</div>
+									</PerfectScrollbar>
 								</div>
 							</div>
 						</div>
@@ -113,7 +114,7 @@ class PageFullHeight extends React.Component {
 						<div className="vertical-box-row bg-green text-white">
 							<div className="vertical-box-cell">
 								<div className="vertical-box-inner-cell">
-									<div className="wrapper height-full overflow-scroll">
+									<PerfectScrollbar className="wrapper height-full" options={{suppressScrollX: true}}>
 										Content Area with scrollbar. Try to scroll down.
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
@@ -143,7 +144,7 @@ class PageFullHeight extends React.Component {
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
 										You got the bottom
-									</div>
+									</PerfectScrollbar>
 								</div>
 							</div>
 						</div>

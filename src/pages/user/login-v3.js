@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { PageSettings } from './../../config/page-settings.js';
 
 class LoginV3 extends React.Component {
 	static contextType = PageSettings;
 
+	constructor(props) {
+    super(props);
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
 	componentDidMount() {
 		this.context.handleSetPageSidebar(false);
 		this.context.handleSetPageHeader(false);
@@ -16,6 +22,11 @@ class LoginV3 extends React.Component {
 		this.context.handleSetPageHeader(true);
 		this.context.handleSetBodyWhiteBg(false);
 	}
+	
+	handleSubmit(event) {
+		event.preventDefault();
+    this.props.history.push('/dashboard/v3');
+  }
   
 	render() {
 		return (
@@ -40,7 +51,7 @@ class LoginV3 extends React.Component {
 						</div>
 					</div>
 					<div className="login-content">
-						<form method="POST" className="margin-bottom-0">
+						<form className="margin-bottom-0" onSubmit={this.handleSubmit}>
 							<div className="form-group m-b-15">
 								<input type="text" className="form-control form-control-lg" placeholder="Email Address" required />
 							</div>
@@ -71,4 +82,4 @@ class LoginV3 extends React.Component {
 	}
 }
 
-export default LoginV3;
+export default withRouter(LoginV3);

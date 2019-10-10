@@ -22,7 +22,7 @@ class DropdownLanguage extends React.Component {
 			<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="dropdown navbar-languager" tag="li">
 				<DropdownToggle className="dropdown-toggle" tag="a">
 					<span className="flag-icon flag-icon-us m-r-5" title="us"></span>
-					<span className="name">EN</span> <b className="caret"></b>
+					<span className="name d-none d-sm-inline">EN</span>
 				</DropdownToggle>
 				<DropdownMenu className="dropdown-menu dropdown-menu-right" tag="ul">
 					<DropdownItem><span className="flag-icon flag-icon-us m-r-5" title="us"></span> English</DropdownItem>

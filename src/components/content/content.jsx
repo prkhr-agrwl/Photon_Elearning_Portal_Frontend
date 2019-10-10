@@ -26,8 +26,8 @@ class Content extends React.Component {
 	render() {
 		return (
 			<PageSettings.Consumer>
-				{({pageContentFullWidth, pageContentClass}) => (
-					<div className={'content ' + (pageContentFullWidth ? 'content-full-width ' : '' + pageContentClass)}>
+				{({pageContentFullWidth, pageContentClass, pageContentInverseMode}) => (
+					<div className={'content ' + (pageContentFullWidth ? 'content-full-width ' : '') + (pageContentInverseMode ? 'content-inverse-mode ' : '') + pageContentClass}>
 						{routes.map((route, index) => (
 							<Route
 								key={index}

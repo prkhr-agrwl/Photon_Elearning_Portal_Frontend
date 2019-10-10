@@ -1,52 +1,43 @@
 const Menu = [
   {
-    path: '/dashboard/v1',
+    path: '/dashboard',
     icon: 'fa fa-th',
     title: 'Dashboard'
   },
   {
-    path: '/dashboard/v1',
-    icon: 'fa fa-edit',
-    title: 'Learn this Topic',
-    children: [
-      { path: '/dashboard/v1', title: 'Learn Page' },
-      { path: '/dashboard/v2', title: 'Theory Page' },
-      { path: '/dashboard/v2', title: 'Assignment Page' }
-    ]
+    path: '/knowledgeDomains',
+    icon: 'fa fa-hdd',
+    title: 'Knowledge Domains'
+    // children: [
+    //   { path: '/knowledgeDomains/jee', title: 'JEE' },
+    //   { path: '/knowledgeDomains/advanced', title: 'Advanced' },
+    //   { path: '/knowledgeDomains/neet', title: 'NEET' }
+    // ]
   },
   {
-    path: '/dashboard/v1',
-    icon: 'fa fa-code-branch fa-rotate-90',
-    title: 'Page Nav',
-    children: [
-      { path: '/dashboard/v1', title: 'Section 1' },
-      { path: '/dashboard/v2', title: 'Section 2' }
-    ]
+    path: '/widgets',
+    icon: 'fab fa-simplybuilt',
+    title: 'Courses'
   },
   {
-    path: '/dashboard/v1',
-    icon: 'fas fa-lg fa-fw m-r-10 fa-gem',
-    title: 'PhotonEcademy Courses'
+    path: '/ui',
+    icon: 'fa fa-gem',
+    title: 'Admin Activity'
   },
   {
-    path: '/dashboard/v1',
-    icon: 'fas fa-lg fa-fw m-r-10 fa-rocket',
-    title: 'Online Tests Portal'
+    path: '/bootstrap-4',
+    img: '/assets/img/logo/logo-bs4.png',
+    title: 'Students'
   },
   {
-    path: '/dashboard/v1',
-    icon: 'fa fa-briefcase',
-    title: 'My Orders'
+    path: '/form',
+    icon: 'fa fa-list-ol',
+    title: 'Orders'
   },
   {
-    path: '/dashboard/v1',
-    icon: 'far fa-lg fa-fw m-r-10 fa-user-circle',
-    title: 'Update Profile'
-  },
-  {
-    path: '/dashboard/v1',
-    icon: 'fas fa-lg fa-fw m-r-10 fa-sign-out-alt',
-    title: 'Sign Out'
+    path: '/table',
+    icon: 'fa fa-table',
+    title: 'Logout'
   }
 ];
 

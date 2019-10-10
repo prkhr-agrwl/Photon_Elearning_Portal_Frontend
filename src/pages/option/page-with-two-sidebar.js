@@ -17,7 +17,7 @@ class PageWithTwoSidebar extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/page-option/with-two-sidebar">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/page-option/with-two-sidebar">Page Options</Link></li>
 					<li className="breadcrumb-item active">Page with Two Sidebar</li>

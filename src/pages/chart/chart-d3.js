@@ -125,7 +125,7 @@ class ChartD3 extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/chart/d3">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/chart/d3">Page Options</Link></li>
 					<li className="breadcrumb-item active">d3 Chart</li>
@@ -136,7 +136,7 @@ class ChartD3 extends React.Component {
 					<span className="label label-inverse m-r-5">NOTE!</span> NVD3 Chart is not supported in old browser like IE8.
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Line Chart</PanelHeader>
 							<PanelBody>
@@ -146,7 +146,7 @@ class ChartD3 extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Bar Chart</PanelHeader>
 							<PanelBody>
@@ -158,7 +158,7 @@ class ChartD3 extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Stacked Area Chart</PanelHeader>
 							<PanelBody>
@@ -168,7 +168,7 @@ class ChartD3 extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Multi Bar Horizontal Chart</PanelHeader>
 							<PanelBody>
@@ -180,7 +180,7 @@ class ChartD3 extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Pie Chart</PanelHeader>
 							<PanelBody>
@@ -190,7 +190,7 @@ class ChartD3 extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Donut Chart</PanelHeader>
 							<PanelBody>

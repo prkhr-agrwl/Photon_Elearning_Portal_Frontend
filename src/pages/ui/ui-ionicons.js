@@ -24,7 +24,7 @@ class UIIonicons extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Ionicons</li>
@@ -37,7 +37,7 @@ class UIIonicons extends React.Component {
 							className={classnames({ active: this.state.activeTab === '1' })}
 							onClick={() => { this.toggle('1'); }}
 						>
-							<i className="ion-logo-android fa-2x pull-left t-minus-3 text-green"></i> <span className="d-none d-lg-inline m-l-5">Material style (317)</span>&nbsp;
+							<i className="ion-logo-android fa-lg text-green"></i> <span className="d-none d-lg-inline m-l-5">Material style (317)</span>&nbsp;
 						</NavLink>
 					</NavItem>
 					<NavItem>
@@ -45,7 +45,7 @@ class UIIonicons extends React.Component {
 							className={classnames({ active: this.state.activeTab === '2' })}
 							onClick={() => { this.toggle('2'); }}
 						>
-							<i className="ion-logo-apple  fa-2x pull-left t-minus-3"></i> <span className="d-none d-lg-inline m-l-5">IOS style (317)</span>&nbsp;
+							<i className="ion-logo-apple fa-lg"></i> <span className="d-none d-lg-inline m-l-5">IOS style (317)</span>&nbsp;
 						</NavLink>
 					</NavItem>
 					<NavItem>
@@ -53,7 +53,7 @@ class UIIonicons extends React.Component {
 							className={classnames({ active: this.state.activeTab === '3' })}
 							onClick={() => { this.toggle('3'); }}
 						>
-							<i className="ion-logo-ionic fa-2x pull-left t-minus-3 text-primary"></i> <span className="d-none d-lg-inline m-l-5">Logos (62)</span>&nbsp;
+							<i className="ion-logo-ionic fa-lg text-blue"></i> <span className="d-none d-lg-inline m-l-5">Logos (62)</span>&nbsp;
 						</NavLink>
 					</NavItem>
 				</Nav>

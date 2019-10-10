@@ -9,7 +9,7 @@ class UITypography extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Typography</li>
@@ -17,7 +17,7 @@ class UITypography extends React.Component {
 				<h1 className="page-header">Typography <small>header small text goes here...</small></h1>
 		
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Headings</PanelHeader>
 							<PanelBody>
@@ -240,7 +240,7 @@ class UITypography extends React.Component {
 							/>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Body Copy</PanelHeader>
 							<PanelBody>

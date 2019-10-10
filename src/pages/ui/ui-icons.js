@@ -22,7 +22,7 @@ class UIIcons extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Icons</li>
@@ -31,7 +31,7 @@ class UIIcons extends React.Component {
 				<h1 className="page-header">Icons <small>header small text goes here...</small></h1>
 			
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Icon Sizes</PanelHeader>
 							<PanelBody>
@@ -122,7 +122,7 @@ class UIIcons extends React.Component {
 '</div>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>List Icons</PanelHeader>
 							<PanelBody>
@@ -224,7 +224,7 @@ class UIIcons extends React.Component {
 				</div>
 				
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<h3 className="m-b-10"><b>Solid</b></h3>
 						<p className="m-b-20">
 							Solid type Font Awesome Icon prefix 
@@ -698,7 +698,7 @@ class UIIcons extends React.Component {
 							<div className="col-md-6 col-sm-6 col-xs-6 m-b-10 text-ellipsis"><i className="fas fa-lg fa-fw m-r-10 fa-yen-sign"></i> <span className="text-inverse">yen-sign</span></div>
 						</div>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<h3 className="m-b-10"><b>Regular</b></h3>
 						<p className="m-b-20">
 							Regular type Font Awesome Icon prefix 

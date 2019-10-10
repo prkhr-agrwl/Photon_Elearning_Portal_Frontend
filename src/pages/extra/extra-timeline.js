@@ -6,7 +6,7 @@ class ExtraTimeline extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/extra/timeline">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/extra/timeline">Extra</Link></li>
 					<li className="breadcrumb-item active">Timeline</li>
@@ -34,10 +34,6 @@ class ExtraTimeline extends React.Component {
 								</p>
 							</div>
 							<div className="timeline-likes">
-								<div className="stats-right">
-									<span className="stats-text">259 Shares</span>
-									<span className="stats-text">21 Comments</span>
-								</div>
 								<div className="stats">
 									<span className="fa-stack fa-fw stats-icon">
 									<i className="fa fa-circle fa-stack-2x text-danger"></i>
@@ -48,6 +44,10 @@ class ExtraTimeline extends React.Component {
 									<i className="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 									</span>
 									<span className="stats-total">4.3k</span>
+								</div>
+								<div className="stats-right">
+									<span className="stats-text">259 Shares</span>
+									<span className="stats-text">21 Comments</span>
 								</div>
 							</div>
 							<div className="timeline-footer">

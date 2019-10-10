@@ -38,33 +38,35 @@ class ExtraComingSoon extends React.Component {
 					</div>
 					<div className="timer">
 						<div id="timer" className="is-countdown">
-							<span className="countdown-row countdown-show4">
-								<Countdown className="custom-counter" endDate={this.endDate}>
-									{({ days, hrs, mins, secs, isCompleted }) => {
-										return isCompleted	? 
-										'Done'
-											: 
-										<React.Fragment>
-											<span className="countdown-section">
-												<span className="countdown-amount">{days > 0 && `${days}`}</span>
-												<span className="countdown-period">Days</span>
+							<Countdown className="custom-counter" endDate={this.endDate}>
+								{({ days, hrs, mins, secs, isCompleted }) => {
+									return isCompleted	? 
+									'Done'
+										: 
+									<React.Fragment>
+										<span className="countdown-row countdown-show4">
+											<span className="d-flex flex-grow-1">
+												<span className="countdown-section">
+													<span className="countdown-amount">{days > 0 && `${days}`}</span>
+													<span className="countdown-period">Days</span>
+												</span>
+												<span className="countdown-section">
+													<span className="countdown-amount">{hrs}</span>
+													<span className="countdown-period">Hours</span>
+												</span>
+												<span className="countdown-section">
+													<span className="countdown-amount">{doubleDigit(mins)}</span>
+													<span className="countdown-period">Minutes</span>
+												</span>
+												<span className="countdown-section">
+													<span className="countdown-amount">{doubleDigit(secs)}</span>
+													<span className="countdown-period">Seconds</span>
+												</span>
 											</span>
-											<span className="countdown-section">
-												<span className="countdown-amount">{hrs}</span>
-												<span className="countdown-period">Hours</span>
-											</span>
-											<span className="countdown-section">
-												<span className="countdown-amount">{doubleDigit(mins)}</span>
-												<span className="countdown-period">Minutes</span>
-											</span>
-											<span className="countdown-section">
-												<span className="countdown-amount">{doubleDigit(secs)}</span>
-												<span className="countdown-period">Seconds</span>
-											</span>
-										</React.Fragment>
-									}}
-								</Countdown>
-							</span>
+										</span>
+									</React.Fragment>
+								}}
+							</Countdown>
 						</div>
 					</div>
 				</div>

@@ -8,10 +8,12 @@ class Map extends React.Component {
 	
 	componentDidMount() {
 		this.context.handleSetPageContentFullWidth(true);
+		this.context.handleSetPageContentInverseMode(true);
 	}
 
 	componentWillUnmount() {
 		this.context.handleSetPageContentFullWidth(false);
+		this.context.handleSetPageContentInverseMode(false);
 	}
   
 	render() {

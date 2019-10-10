@@ -159,14 +159,14 @@ class ChartJS extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/chart/js">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/chart/js">Chart</Link></li>
 					<li className="breadcrumb-item active">Chart JS</li>
 				</ol>
 				<h1 className="page-header">Chart JS <small>header small text goes here...</small></h1>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Line Chart</PanelHeader>
 							<PanelBody>
@@ -180,7 +180,7 @@ class ChartJS extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Bar Chart</PanelHeader>
 							<PanelBody>
@@ -196,7 +196,7 @@ class ChartJS extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Radar Chart</PanelHeader>
 							<PanelBody>
@@ -210,7 +210,7 @@ class ChartJS extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Polar Area Chart</PanelHeader>
 							<PanelBody>

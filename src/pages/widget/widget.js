@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { UnControlled as CodeMirror } from 'react-codemirror2'
+import PerfectScrollbar from 'react-perfect-scrollbar';
 require('codemirror/mode/xml/xml.js');
 require('codemirror/mode/javascript/javascript.js');
 
@@ -128,7 +129,7 @@ class Widgets extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/widgets">Home</Link></li>
 					<li className="breadcrumb-item active">Widgets</li>
 				</ol>
@@ -301,7 +302,7 @@ class Widgets extends React.Component {
 									<p className="widget-chat-header-desc">55 members, 4 online</p>
 								</div>
 							</div>
-							<div className="widget-chat-body overflow-scroll" style={{height: '235px'}}>
+							<PerfectScrollbar className="widget-chat-body" style={{height: '235px'}} options={{suppressScrollX: true}}>
 								<div className="widget-chat-item with-media left">
 									<div className="widget-chat-media">
 										<img alt="" src="/assets/img/user/user-1.jpg" />
@@ -375,7 +376,7 @@ class Widgets extends React.Component {
 										</div>
 									</div>
 								</div>
-							</div>
+							</PerfectScrollbar>
 							<div className="widget-input widget-input-rounded">
 								<form action="" method="POST" name="">
 									<div className="widget-input-container">
@@ -517,7 +518,7 @@ class Widgets extends React.Component {
 							<b className="text-inverse">WIDGET IMAGE / ICON</b>
 						</div>
 						<div className="row m-b-30">
-							<div className="col-lg-6">
+							<div className="col-xl-6">
 								<div className="clearfix">
 									<div className="widget-icon rounded bg-indigo pull-left m-r-5 m-b-5 text-white">
 										<i className="fab fa-digital-ocean"></i>
@@ -556,7 +557,7 @@ class Widgets extends React.Component {
 									</div>
 								</div>
 							</div>
-							<div className="col-lg-6">
+							<div className="col-xl-6">
 								<div className="pull-left">
 									<div className="widget-img rounded bg-inverse pull-left m-r-5 m-b-5"
 										style={{backgroundImage: 'url(/assets/img/gallery/gallery-11-thumb.jpg)'}}
@@ -601,7 +602,7 @@ class Widgets extends React.Component {
 							<b className="text-inverse">WIDGET CARD</b>
 						</div>
 						<div className="row row-space-10">
-							<div className="col-lg-6">
+							<div className="col-xl-6">
 								<Link to="/widgets" className={'widget-card widget-card-rounded m-b-20 '+ (this.state.darkTheme ? 'inverse-mode ' : '')}>
 									<div className="widget-card-cover" style={{backgroundImage: 'url(/assets/img/gallery/gallery-portrait-11-thumb.jpg)'}}></div>
 									<div className="widget-card-content">
@@ -614,7 +615,7 @@ class Widgets extends React.Component {
 									</div>
 								</Link>
 							</div>
-							<div className="col-lg-6">
+							<div className="col-xl-6">
 								<Link to="/widgets" className={'widget-card widget-card-rounded m-b-20 '+ (this.state.darkTheme ? 'inverse-mode ' : '')}>
 									<div className="widget-card-cover"></div>
 									<div className="widget-card-content">

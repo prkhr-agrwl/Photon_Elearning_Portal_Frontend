@@ -66,6 +66,7 @@ class PanelHeader extends React.Component {
 	render() {
 		return (
 			<div className="panel-heading">
+				<h4 className="panel-title">{ this.props.children }</h4>
 				{(!this.props.noButton &&
 					<PanelStat.Consumer>
 						{({ toggleExpand, toggleRemove, toggleCollapse, toggleReload }) => (
@@ -78,7 +79,6 @@ class PanelHeader extends React.Component {
 						)}
 					</PanelStat.Consumer>
 				)}
-				<h4 className="panel-title">{ this.props.children }</h4>
 			</div>
 		)
 	}

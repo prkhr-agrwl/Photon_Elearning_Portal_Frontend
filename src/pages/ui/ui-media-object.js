@@ -6,14 +6,14 @@ class UIMediaObject extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Media Object</li>
 				</ol>
 				<h1 className="page-header">Media Object <small>header small text goes here...</small></h1>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Default Media Object
@@ -67,7 +67,7 @@ class UIMediaObject extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Media List
@@ -125,7 +125,7 @@ class UIMediaObject extends React.Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Media Object Sizes
@@ -170,7 +170,7 @@ class UIMediaObject extends React.Component {
 							</PanelBody>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Media List with Button

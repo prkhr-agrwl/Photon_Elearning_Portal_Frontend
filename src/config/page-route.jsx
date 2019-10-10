@@ -3,6 +3,8 @@ import { Redirect } from 'react-router';
 
 import DashboardV1 from './../pages/dashboard/dashboard-v1.js';
 import DashboardV2 from './../pages/dashboard/dashboard-v2.js';
+import DashboardV3 from './../pages/dashboard/dashboard-v3.js';
+import KnowledgeDomain from './../pages/knowledgeDomain/KnowledgeDomain.js';
 import EmailInbox from './../pages/email/email-inbox.js';
 import EmailCompose from './../pages/email/email-compose.js';
 import EmailDetail from './../pages/email/email-detail.js';
@@ -26,6 +28,7 @@ import TableBasic from './../pages/table/table-basic.js';
 import TableData from './../pages/table/table-data.js';
 import ChartJS from './../pages/chart/chart-js.js';
 import ChartD3 from './../pages/chart/chart-d3.js';
+import ChartApex from './../pages/chart/chart-apex.js';
 import Calendar from './../pages/calendar/calendar.js';
 import Map from './../pages/map/map.js';
 import Gallery from './../pages/gallery/gallery.js';
@@ -60,18 +63,28 @@ const routes = [
   {
     path: '/',
     exact: true,
-    component: () => <Redirect to='/dashboard/v1' />
+    component: () => <Redirect to='/dashboard/v2' />
   },
   {
-    path: '/dashboard/v1',
+    path: '/dashboard',
     exact: true,
-    title: 'Dashboard V1',
+    title: 'Dashboard',
     component: () => <DashboardV1 />
   },
   {
     path: '/dashboard/v2',
     title: 'Dashboard V2',
     component: () => <DashboardV2 />
+  },
+  {
+    path: '/dashboard/v3',
+    title: 'Dashboard V3',
+    component: () => <DashboardV3 />
+  },
+  {
+    path: '/knowledgeDomains',
+    title: 'Knowledge Domains',
+    component: () => <KnowledgeDomain />
   },
   {
     path: '/email/inbox',
@@ -187,6 +200,11 @@ const routes = [
     path: '/chart/d3',
     title: 'd3 Chart',
     component: () => <ChartD3 />
+  },
+  {
+    path: '/chart/apex',
+    title: 'Apex Chart',
+    component: () => <ChartApex />
   },
   {
     path: '/calendar',

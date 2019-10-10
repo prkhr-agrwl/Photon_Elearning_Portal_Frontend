@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Panel, PanelHeader, PanelBody } from './../../components/panel/panel.jsx';
 import { UnControlled as CodeMirror } from 'react-codemirror2'
+import { Alert } from 'reactstrap';
 require('codemirror/mode/xml/xml.js');
 require('codemirror/mode/javascript/javascript.js');
 
@@ -17,12 +18,21 @@ class UIGeneral extends React.Component {
 			tabSize: 2,
 			autoScroll: false
 		}
+		this.state = {
+      visible: true
+    };
+
+    this.onDismiss = this.onDismiss.bind(this);
 	}
+	
+	onDismiss() {
+    this.setState({ visible: false });
+  }
 	
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">General</li>
@@ -30,23 +40,21 @@ class UIGeneral extends React.Component {
 				<h1 className="page-header">General UI Elements <small>header small text goes here...</small></h1>
 		
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Alerts</PanelHeader>
 							<PanelBody>
-								<div className="alert alert-success fade show m-b-0">
-									<span className="close" data-dismiss="alert">&times;</span>
+								<Alert color="success" className="mb-0" isOpen={this.state.visible} toggle={this.onDismiss}>
 									<strong>Success!</strong>
 									This is a success alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-								</div>
+								</Alert>
 							</PanelBody>
 							<CodeMirror options={this.codeMirrorOptions} value={
-'<div className="alert alert-success fade show">\n'+
-'	<span className="close" data-dismiss="alert">&times;</span>\n'+
+'<Alert color="success" isOpen={this.state.visible} toggle={this.onDismiss}>\n'+
 '	<strong>Success!</strong>\n'+
 '	This is a success alert with \n'+
 '	<Link to="/ui/general" className="alert-link">an example link</Link>. \n'+
-'</div>'}
+'</Alert>'}
 							/>
 						</Panel>
 						<Panel>
@@ -54,106 +62,92 @@ class UIGeneral extends React.Component {
 							<PanelBody>
 								<div className="row row-space-10">
 									<div className="col-md-4">
-										<div className="alert alert-primary fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="primary" className="m-b-10">
 											Primary alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-info fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="info" className="m-b-10">
 											Info alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-purple fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="purple" className="m-b-10">
 											Purple alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-indigo fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="indigo" className="m-b-10">
 											Indigo alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-success fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="success" className="m-b-10">
 											Success alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-green fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="green" className="m-b-10">
 											Green alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-lime fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="lime" className="m-b-10">
 											Lime alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-warning fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="warning" className="m-b-10">
 											Warning alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-yellow fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="yellow" className="m-b-10">
 											Yellow alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-danger fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="danger" className="m-b-10">
 											Danger alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-pink fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="pink" className="m-b-10">
 											Pink alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-dark fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="dark" className="m-b-10">
 											Dark alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-secondary fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="secondary" className="m-b-10">
 											Secondary alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 									<div className="col-md-4">
-										<div className="alert alert-light fade show m-b-10">
-											<span className="close" data-dismiss="alert">&times;</span>
+										<Alert color="light" className="m-b-10">
 											Light alert with <Link to="/ui/general" className="alert-link">an example link</Link>.
-										</div>
+										</Alert>
 									</div>
 								</div>
 							</PanelBody>
 							<CodeMirror options={this.codeMirrorOptions} value={
-'<div className="alert alert-primary fade show">...</div>\n'+
-'<div className="alert alert-secondary fade show">...</div>\n'+
-'<div className="alert alert-success fade show">...</div>\n'+
-'<div className="alert alert-danger fade show">...</div>\n'+
-'<div className="alert alert-warning fade show">...</div>\n'+
-'<div className="alert alert-yellow fade show">...</div>\n'+
-'<div className="alert alert-info fade show">...</div>\n'+
-'<div className="alert alert-lime fade show">...</div>\n'+
-'<div className="alert alert-purple fade show">...</div>\n'+
-'<div className="alert alert-light fade show">...</div>\n'+
-'<div className="alert alert-dark fade show">...</div>\n'+
-'<div className="alert alert-indigo fade show">...</div>\n'+
-'<div className="alert alert-pink fade show">...</div>\n'+
-'<div className="alert alert-green fade show">...</div>'}
+'<Alert color="primary">...</Alert>\n'+
+'<Alert color="secondary">...</Alert>\n'+
+'<Alert color="success">...</Alert>\n'+
+'<Alert color="danger">...</Alert>\n'+
+'<Alert color="warning">...</Alert>\n'+
+'<Alert color="yellow">...</Alert>\n'+
+'<Alert color="info">...</Alert>\n'+
+'<Alert color="lime">...</Alert>\n'+
+'<Alert color="purple">...</Alert>\n'+
+'<Alert color="light">...</Alert>\n'+
+'<Alert color="dark">...</Alert>\n'+
+'<Alert color="indigo">...</Alert>\n'+
+'<Alert color="pink">...</Alert>\n'+
+'<Alert color="green">...</Alert>'}
 							/>
 						</Panel>
 						<Panel>
@@ -180,11 +174,13 @@ class UIGeneral extends React.Component {
 									</div>
 								</div>
 								<div className="note note-secondary m-b-15">
-									<h4><b>Note without icon!</b></h4>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-										Maecenas id gravida libero. Etiam semper id sem a ultricies.
-									</p>
+									<div className="note-content">
+										<h4><b>Note without icon!</b></h4>
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+											Maecenas id gravida libero. Etiam semper id sem a ultricies.
+										</p>
+									</div>
 								</div>
 							</PanelBody>
 							<CodeMirror options={this.codeMirrorOptions} value={
@@ -208,7 +204,7 @@ class UIGeneral extends React.Component {
 							/>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								Labels & Badges <span className="label label-success">NEW</span>

@@ -4,6 +4,8 @@ import { PageSettings } from './../../config/page-settings.js';
 import FloatSubMenuList from './float-sub-menu-list.jsx';
 
 class FloatSubMenu extends React.Component {
+	static contextType = PageSettings;
+	
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -26,6 +28,9 @@ class FloatSubMenu extends React.Component {
 				clicked: 1
 			}));
 		}
+		setTimeout(() => {
+			this.context.handleFloatSubMenuClick();
+		}, 0);
 	}
 	
 	render() {

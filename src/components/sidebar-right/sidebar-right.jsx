@@ -45,15 +45,15 @@ class SidebarRight extends React.Component {
 							<React.Fragment>
 								<div id="sidebar-right" className="sidebar sidebar-right">
 									<div className="overflow-scroll height-full">
-										<ul className="nav m-t-10">
-											<li className="nav-widget">
-												<p>Accordion</p>
-												<div id="accordion" className="card-accordion">
+										<ul className="nav">
+											<li className="nav-widget p-0">
+												<p className="text-white m-0 p-15">Accordion</p>
+												<div id="accordion" className="accordion">
 													{
 														this.state.collapse.map((value, i) => (
-														<Card key={i}>
-															<CardHeader className={'card-header bg-success text-white pointer-cursor border-0 ' + (!value.collapse ? 'collapsed ' : '')} onClick={() => this.toggleCollapse(value.id)}>
-																Accordion Item #{value.id}
+														<Card className="bg-dark text-white border-0" key={i}>
+															<CardHeader className={'card-header bg-dark-darker text-white pointer-cursor border-0 ' + (!value.collapse ? 'collapsed ' : '')} onClick={() => this.toggleCollapse(value.id)}>
+																<i className="fa fa-circle text-teal f-s-8 mr-2"></i> Accordion Item #{value.id}
 															</CardHeader>
 															<Collapse isOpen={value.collapse}>
 																<CardBody className="p-15">

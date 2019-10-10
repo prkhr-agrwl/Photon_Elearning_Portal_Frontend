@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Panel, PanelHeader, PanelFooter, PanelBody } from './../../components/panel/panel.jsx';
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, ButtonGroup } from 'reactstrap';
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, ButtonGroup, Alert } from 'reactstrap';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import { UnControlled as CodeMirror } from 'react-codemirror2'
@@ -43,7 +44,7 @@ class UIWidgetBoxes extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Widget Boxes</li>
@@ -51,7 +52,7 @@ class UIWidgetBoxes extends React.Component {
 				<h1 className="page-header">Widget Boxes <small>header small text goes here...</small></h1>
 		
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Panel (Default)</PanelHeader>
 							<PanelBody>
@@ -160,7 +161,7 @@ class UIWidgetBoxes extends React.Component {
 				
 						<Panel>
 							<PanelHeader noButton={true}>
-								<span className="label label-success m-r-10 pull-left">NEW</span> Panel Header with Label
+								<span className="label label-success mr-2">NEW</span> Panel Header with Label
 							</PanelHeader>
 							<PanelBody>
 								<p>Panel Content Here</p>
@@ -168,7 +169,7 @@ class UIWidgetBoxes extends React.Component {
 							<CodeMirror options={this.codeMirrorOptions} value={
 '<Panel>\n'+
 '	<PanelHeader noButton={true}>\n'+
-'		<span className="label label-success m-r-10 pull-left">NEW</span> Panel Header with Label\n'+
+'		<span className="label label-success mr-2">NEW</span> Panel Header with Label\n'+
 '	</PanelHeader>\n'+
 '	<PanelBody>\n'+
 '		<p>Panel Content Here</p>\n'+
@@ -180,11 +181,10 @@ class UIWidgetBoxes extends React.Component {
 							<PanelHeader>
 								Panel with Alert Box
 							</PanelHeader>
-							<div className="alert alert-success fade show">
-								<span className="close" data-dismiss="alert">×</span>
+							<Alert color="success" className="mb-0">
 								<i className="fa fa-check fa-2x pull-left m-r-10"></i>
 								<p className="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac posuere lacus, quis suscipit sem. Nulla sagittis aliquam erat non convallis.</p>
-							</div>
+							</Alert>
 							<PanelBody>
 								<p>Panel Content Here</p>
 							</PanelBody>
@@ -193,18 +193,17 @@ class UIWidgetBoxes extends React.Component {
 '	<PanelHeader>\n'+
 '		Panel with Alert Box\n'+
 '	</PanelHeader>\n'+
-'	<div className="alert alert-success fade show">\n'+
-'		<span className="close" data-dismiss="alert">×</span>\n'+
+'	<Alert color="success" className="mb-0">\n'+
 '		<i className="fa fa-check fa-2x pull-left m-r-10"></i>\n'+
 '		<p className="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac posuere lacus, quis suscipit sem. Nulla sagittis aliquam erat non convallis.</p>\n'+
-'	</div>\n'+
+'	</Alert>\n'+
 '	<PanelBody>\n'+
 '		<p>Panel Content Here</p>\n'+
 '	</PanelBody>\n'+
 '</Panel>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel className="panel-hover-icon">
 							<PanelHeader>
 								Hover View Icon
@@ -228,7 +227,7 @@ class UIWidgetBoxes extends React.Component {
 								Panel with Scrollbar
 							</PanelHeader>
 							<PanelBody>
-								<div className="overflow-scroll" style={{height: '280px'}}>
+								<PerfectScrollbar style={{height: '280px'}} options={{suppressScrollX: true}}>
 									<p>
 										<span className="fa-stack fa-4x pull-left m-r-10 text-inverse">
 											<i className="fab fa-twitter fa-stack-1x"></i>
@@ -270,7 +269,7 @@ class UIWidgetBoxes extends React.Component {
 										Nunc eu enim ac neque tempor feugiat. Duis posuere lacus non magna eleifend, 
 										non dictum sem feugiat. Duis eleifend condimentum pulvinar.
 									</p>
-								</div>
+								</PerfectScrollbar>
 							</PanelBody>
 							<CodeMirror options={this.codeMirrorOptions} value={
 '<Panel>\n'+
@@ -278,9 +277,9 @@ class UIWidgetBoxes extends React.Component {
 '		Panel with Scrollbar\n'+
 '	</PanelHeader>\n'+
 '	<PanelBody>\n'+
-'		<div className="overflow-scroll">\n'+
+'		<PerfectScrollbar class="height-sm" options={{suppressScrollX: true}}>\n'+
 '	  	...\n'+
-'		</div>\n'+
+'		</PerfectScrollbar>\n'+
 '	</PanelBody>\n'+
 '</Panel>'} />
 						</Panel>
@@ -330,15 +329,15 @@ class UIWidgetBoxes extends React.Component {
 				
 						<Panel theme="default" className="panel-with-tabs">
 							<PanelHeader noButton={true}>
-								<Nav tabs className="pull-right">
+								<Nav tabs className="pull-right mt-n1 mb-n3">
 									<NavItem>
-										<NavLink className={classnames({ active: this.state.activeTab === '1' })}
+										<NavLink className={'pt-2 pb-2 ' + classnames({ active: this.state.activeTab === '1' })}
 											onClick={() => { this.toggleTab('1'); }}>
 											Home
 										</NavLink>
 									</NavItem>
 									<NavItem>
-										<NavLink className={classnames({ active: this.state.activeTab === '2' })}
+										<NavLink className={'pt-2 pb-2 ' + classnames({ active: this.state.activeTab === '2' })}
 											onClick={() => { this.toggleTab('2'); }}>
 											Profile
 										</NavLink>
@@ -346,39 +345,43 @@ class UIWidgetBoxes extends React.Component {
 								</Nav>
 								Panel with Tabs
 							</PanelHeader>
-							<TabContent activeTab={this.state.activeTab}>
-								<TabPane tabId="1">
-									<p className="m-b-0">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-								</TabPane>
-								<TabPane tabId="2">
-									<p className="m-b-0">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-								</TabPane>
-							</TabContent>
+							<PanelBody>
+								<TabContent activeTab={this.state.activeTab}>
+									<TabPane tabId="1">
+										<p className="m-b-0">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+									</TabPane>
+									<TabPane tabId="2">
+										<p className="m-b-0">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+									</TabPane>
+								</TabContent>
+							</PanelBody>
 							<CodeMirror options={this.codeMirrorOptions} value={
 '<Panel theme="default" className="panel-with-tabs">\n'+
 '	<PanelHeader noButton={true}>\n'+
-'		<Nav tabs className="pull-right">\n'+
+'		<Nav tabs className="pull-right mt-n1 mb-n3">\n'+
 '			<NavItem>\n'+
-'				<NavLink>\n'+
+'				<NavLink className="pt-2 pb-2">\n'+
 '					Home\n'+
 '				</NavLink>\n'+
 '			</NavItem>\n'+
 '			<NavItem>\n'+
-'				<NavLink>\n'+
+'				<NavLink className="pt-2 pb-2">\n'+
 '					Profile\n'+
 '				</NavLink>\n'+
 '			</NavItem>\n'+
 '		</Nav>\n'+
 '		Panel with Tabs\n'+
 '	</PanelHeader>\n'+
-'	<TabContent activeTab={this.state.activeTab}>\n'+
-'		<TabPane tabId="1">\n'+
-'			<p className="m-b-0">...</p>\n'+
-'		</TabPane>\n'+
-'		<TabPane tabId="2">\n'+
-'			<p className="m-b-0">...</p>\n'+
-'		</TabPane>\n'+
-'	</TabContent>\n'+
+' <PanelBody>\n'+
+'	  <TabContent activeTab={this.state.activeTab}>\n'+
+'		  <TabPane tabId="1">\n'+
+'			  <p className="m-b-0">...</p>\n'+
+'		  </TabPane>\n'+
+'		  <TabPane tabId="2">\n'+
+'			  <p className="m-b-0">...</p>\n'+
+'		  </TabPane>\n'+
+'	  </TabContent>\n'+
+' </PanelBody>\n'+
 '</Panel>'} />
 						</Panel>
 					</div>
@@ -387,7 +390,7 @@ class UIWidgetBoxes extends React.Component {
 				<h3 className="m-b-20">Panel Theme</h3>
 		
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel theme="default">
 							<PanelHeader>Panel (Default)</PanelHeader>
 							<PanelBody>
@@ -432,7 +435,7 @@ class UIWidgetBoxes extends React.Component {
 '</Panel>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Panel Inverse</PanelHeader>
 							<PanelBody>
@@ -475,7 +478,7 @@ class UIWidgetBoxes extends React.Component {
 				</p>
 		
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel className="bg-black">
 							<PanelHeader>Full Color Panel</PanelHeader>
 							<PanelBody className="text-white">
@@ -515,7 +518,7 @@ class UIWidgetBoxes extends React.Component {
 '</Panel>'} />
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel theme="warning" className="bg-warning">
 							<PanelHeader>Full Color Panel</PanelHeader>
 							<PanelBody className="text-white">

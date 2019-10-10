@@ -89,10 +89,6 @@ class ExtraProfile extends React.Component {
 											</p>
 										</div>
 										<div className="timeline-likes">
-											<div className="stats-right">
-												<span className="stats-text">259 Shares</span>
-												<span className="stats-text">21 Comments</span>
-											</div>
 											<div className="stats">
 												<span className="fa-stack fa-fw stats-icon">
 												<i className="fa fa-circle fa-stack-2x text-danger"></i>
@@ -103,6 +99,10 @@ class ExtraProfile extends React.Component {
 												<i className="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 												</span>
 												<span className="stats-total">4.3k</span>
+											</div>
+											<div className="stats-right">
+												<span className="stats-text">259 Shares</span>
+												<span className="stats-text">21 Comments</span>
 											</div>
 										</div>
 										<div className="timeline-footer">
@@ -222,7 +222,7 @@ class ExtraProfile extends React.Component {
 							</ul>
 						</div>
 						<div className={'tab-pane fade ' + (this.state.tabAbout ? 'show active ': '')}>
-							<div className="table-responsive">
+							<div className="table-responsive form-inline">
 								<table className="table table-profile">
 									<thead>
 										<tr>
@@ -263,9 +263,9 @@ class ExtraProfile extends React.Component {
 											<td colSpan="2"></td>
 										</tr>
 										<tr>
-											<td className="field">Country/Region</td>
+											<td className="field valign-middle">Country/Region</td>
 											<td>
-												<select className="form-control input-inline input-xs" name="region" defaultValue="US">
+												<select className="form-control form-control-sm" name="region" defaultValue="US">
 													<option value="US">United State</option>
 													<option value="AF">Afghanistan</option>
 													<option value="AL">Albania</option>
@@ -292,26 +292,26 @@ class ExtraProfile extends React.Component {
 											<td><Link to="/extra/profile">Add Webpage</Link></td>
 										</tr>
 										<tr>
-											<td className="field">Gender</td>
+											<td className="field valign-middle">Gender</td>
 											<td>
-												<select className="form-control input-inline input-xs" name="gender">
+												<select className="form-control form-control-sm" name="gender">
 													<option value="male">Male</option>
 													<option value="female">Female</option>
 												</select>
 											</td>
 										</tr>
 										<tr>
-											<td className="field">Birthdate</td>
+											<td className="field valign-middle">Birthdate</td>
 											<td>
-												<select className="form-control input-inline input-xs" name="day">
+												<select className="form-control form-control-sm mr-2" name="day">
 													<option value="04">04</option>
 												</select>
 												-
-												<select className="form-control input-inline input-xs" name="month">
+												<select className="form-control form-control-sm mr-2 ml-2" name="month">
 													<option value="11">11</option>
 												</select>
 												-
-												<select className="form-control input-inline input-xs" name="year">
+												<select className="form-control form-control-sm ml-2" name="year">
 													<option value="1989">1989</option>
 												</select>
 											</td>
@@ -319,7 +319,7 @@ class ExtraProfile extends React.Component {
 										<tr>
 											<td className="field">Language</td>
 											<td>
-												<select className="form-control input-inline input-xs" name="language">
+												<select className="form-control form-control-sm" name="language">
 													<option value="">English</option>
 												</select>
 											</td>
@@ -502,9 +502,9 @@ class ExtraProfile extends React.Component {
 						<div className={'tab-pane fade ' + (this.state.tabFriend ? 'show active ': '')}>
 							<h4 className="m-t-0 m-b-20">Friend List (14)</h4>
 							<div className="row row-space-2">
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-1.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -527,9 +527,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-2.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -552,9 +552,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-3.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -577,9 +577,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-4.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -602,9 +602,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-5.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -627,9 +627,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-6.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -652,9 +652,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-7.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -677,9 +677,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-8.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -702,9 +702,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-9.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -727,9 +727,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-10.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -752,9 +752,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-11.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -777,9 +777,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-12.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -802,9 +802,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-13.jpg" alt="" className="media-object img-circle" />
 											</Link>
@@ -827,9 +827,9 @@ class ExtraProfile extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-6 m-b-2">
+								<div className="col-xl-4 col-lg-6 m-b-5 p-b-1">
 									<div className="p-10 bg-white">
-										<div className="media media-xs overflow-visible">
+										<div className="media media-xs overflow-visible align-items-center">
 											<Link to="/extra/profile" className="media-left">
 												<img src="/assets/img/user/user-14.jpg" alt="" className="media-object img-circle" />
 											</Link>

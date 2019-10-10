@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { PageSettings } from './../../config/page-settings.js';
 
 class RegisterV3 extends React.Component {
 	static contextType = PageSettings;
+	
+	constructor(props) {
+    super(props);
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
 	componentDidMount() {
 		this.context.handleSetPageSidebar(false);
@@ -16,6 +22,11 @@ class RegisterV3 extends React.Component {
 		this.context.handleSetPageHeader(true);
 		this.context.handleSetBodyWhiteBg(false);
 	}
+	
+	handleSubmit(event) {
+		event.preventDefault();
+    this.props.history.push('/dashboard/v3');
+  }
   
 	render() {
 		return (
@@ -35,7 +46,7 @@ class RegisterV3 extends React.Component {
 						<small>Create your Color Admin Account. It’s free and always will be.</small>
 					</h1>
 					<div className="register-content">
-						<form method="POST" className="margin-bottom-0">
+						<form className="margin-bottom-0" onSubmit={this.handleSubmit}>
 							<label className="control-label">Name <span className="text-danger">*</span></label>
 							<div className="row row-space-10">
 								<div className="col-md-6 m-b-15">
@@ -89,4 +100,4 @@ class RegisterV3 extends React.Component {
 	}
 }
 
-export default RegisterV3;
+export default withRouter(RegisterV3);

@@ -50,7 +50,7 @@ class Gallery extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/gallery">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/gallery">Gallery</Link></li>
 					<li className="breadcrumb-item active">Gallery v1</li>

@@ -101,14 +101,14 @@ class UIModalNotification extends React.Component {
 	render() {
 		return (
 			<div>
-				<ol className="breadcrumb pull-right">
+				<ol className="breadcrumb float-xl-right">
 					<li className="breadcrumb-item"><Link to="/">Home</Link></li>
 					<li className="breadcrumb-item"><Link to="/ui">UI Elements</Link></li>
 					<li className="breadcrumb-item active">Modal & Notification</li>
 				</ol>
 				<h1 className="page-header">Modal & Notification <small>header small text goes here...</small></h1>
 				<div className="row">
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>
 								React Notifications Component <span className="label label-success">NEW</span>
@@ -151,7 +151,7 @@ class UIModalNotification extends React.Component {
 							</table>
 						</Panel>
 					</div>
-					<div className="col-lg-6">
+					<div className="col-xl-6">
 						<Panel>
 							<PanelHeader>Modal</PanelHeader>
 							<table className="table">
@@ -205,7 +205,7 @@ class UIModalNotification extends React.Component {
 								</ModalFooter>
 							</Modal>
 							
-							<Modal isOpen={this.state.modalMessage} toggle={() => this.toggleModal('modalMessage')} className={'modal-message'}>
+							<Modal isOpen={this.state.modalMessage} toggle={() => this.toggleModal('modalMessage')} modalClassName="modal-message">
 								<ModalHeader toggle={() => this.toggleModal('modalMessage')}>Modal Message Header</ModalHeader>
           			<ModalBody>
 									<p>Text in a modal</p>

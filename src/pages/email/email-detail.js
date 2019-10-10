@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PageSettings } from './../../config/page-settings.js';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 class EmailDetail extends React.Component {
 	static contextType = PageSettings;
@@ -9,8 +10,10 @@ class EmailDetail extends React.Component {
 		super(props);
 
 		this.toggle = this.toggle.bind(this);
+		this.toggleMobileEmailNav = this.toggleMobileEmailNav.bind(this);
 		this.state = {
-			dropdownOpen: false
+			dropdownOpen: false,
+			isMobileEmailNavOn: false
 		};
 	}
 
@@ -29,21 +32,32 @@ class EmailDetail extends React.Component {
 			dropdownOpen: !prevState.dropdownOpen
 		}));
 	}
+	
+	toggleMobileEmailNav() {
+		this.setState(state => ({
+      isMobileEmailNavOn: !state.isMobileEmailNavOn
+    }));
+	}
   
 	render() {
 		return (
-			<div className="vertical-box with-grid inbox">
-				<div className="vertical-box-column width-200 bg-silver hidden-xs">
+			<div className="vertical-box with-grid inbox bg-light">
+				<div className="vertical-box-column width-200 hidden-xs">
 					<div className="vertical-box">
-						<div className="wrapper bg-silver text-center">
-							<Link to="/email/compose" className="btn btn-inverse p-l-40 p-r-40 btn-sm">
-								Compose
-							</Link>
+						<div className="wrapper text-center">
+							<div className="d-flex align-items-center justify-content-center">
+								<button onClick={this.toggleMobileEmailNav} className="btn btn-inverse btn-sm mr-auto d-block d-lg-none">
+									<i className="fa fa-cog"></i>
+								</button>
+								<Link to="/email/compose" className="btn btn-inverse p-l-40 p-r-40 btn-sm">
+									Compose
+								</Link>
+							</div>
 						</div>
-						<div className="vertical-box-row">
+						<div className={"vertical-box-row collapse d-lg-table-row " + (this.state.isMobileEmailNavOn ? 'show' : '') }>
 							<div className="vertical-box-cell">
 								<div className="vertical-box-inner-cell">
-									<div data-scrollbar="true" data-height="100%">
+									<PerfectScrollbar className="height-full" options={{suppressScrollX: true}}>
 										<div className="wrapper p-0">
 											<div className="nav-title"><b>FOLDERS</b></div>
 											<ul className="nav nav-inbox">
@@ -62,38 +76,38 @@ class EmailDetail extends React.Component {
 												<li><Link to="/email/inbox"><i className="fa fa-fw f-s-10 m-r-5 fa-circle text-danger"></i> Client</Link></li>
 											</ul>
 										</div>
-									</div>
+									</PerfectScrollbar>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className="vertical-box-column bg-white">
+				<div className="vertical-box-column">
 					<div className="vertical-box">
-						<div className="wrapper bg-silver-lighter clearfix">
+						<div className="wrapper clearfix">
 							<div className="pull-left">
 								<div className="btn-group m-r-5">
-									<button className="btn btn-white btn-sm"><i className="fa fa-reply f-s-14 m-r-3 m-r-xs-0 t-plus-1"></i> <span className="hidden-xs">Reply</span></button>
+									<button className="btn btn-white btn-sm"><i className="fa fa-reply m-r-3 m-r-xs-0"></i> <span className="hidden-xs">Reply</span></button>
 								</div>
 								<div className="btn-group m-r-5">
-									<button className="btn btn-white btn-sm"><i className="fa fa-trash f-s-14 m-r-3 m-r-xs-0 t-plus-1"></i> <span className="hidden-xs">Delete</span></button>
-									<button className="btn btn-white btn-sm"><i className="fa fa-archive f-s-14 m-r-3 m-r-xs-0 t-plus-1"></i> <span className="hidden-xs">Archive</span></button>
+									<button className="btn btn-white btn-sm"><i className="fa fa-trash m-r-3 m-r-xs-0"></i> <span className="hidden-xs">Delete</span></button>
+									<button className="btn btn-white btn-sm"><i className="fa fa-archive m-r-3 m-r-xs-0"></i> <span className="hidden-xs">Archive</span></button>
 								</div>
 							</div>
 							<div className="pull-right">
 								<div className="btn-group">
-									<router-link to="/email/inbox" className="btn btn-white btn-sm disabled"><i className="fa fa-arrow-up f-s-14 t-plus-1"></i></router-link>
-									<router-link to="/email/inbox" className="btn btn-white btn-sm"><i className="fa fa-arrow-down f-s-14 t-plus-1"></i></router-link>
+									<Link to="/email/inbox" className="btn btn-white btn-sm disabled"><i className="fa fa-arrow-up"></i></Link>
+									<Link to="/email/inbox" className="btn btn-white btn-sm"><i className="fa fa-arrow-down"></i></Link>
 								</div>
 								<div className="btn-group m-l-5">
-									<router-link to="/email/inbox" className="btn btn-white btn-sm"><i className="fa fa-times f-s-14 t-plus-1"></i></router-link>
+									<Link to="/email/inbox" className="btn btn-white btn-sm"><i className="fa fa-times"></i></Link>
 								</div>
 							</div>
 						</div>
-						<div className="vertical-box-row">
+						<div className="vertical-box-row bg-white">
 							<div className="vertical-box-cell">
 								<div className="vertical-box-inner-cell">
-									<div className="overflow-scroll height-full">
+									<PerfectScrollbar className="height-full" options={{suppressScrollX: true}}>
 										<div className="wrapper">
 											<h3 className="m-t-0 m-b-15 f-w-500">Bootstrap v4.0 is coming soon</h3>
 											<ul className="media-list underline m-b-15 p-b-15">
@@ -154,11 +168,11 @@ class EmailDetail extends React.Component {
 												Senior Front End Designer<br />
 											</p>
 										</div>
-									</div>
+									</PerfectScrollbar>
 								</div>
 							</div>
 						</div>
-						<div className="wrapper bg-silver-lighter text-right clearfix">
+						<div className="wrapper text-right clearfix">
 							<div className="btn-group">
 								<Link to="/email/inbox" className="btn btn-white btn-sm disabled"><i className="fa fa-arrow-up"></i></Link>
 								<Link to="/email/inbox" className="btn btn-white btn-sm"><i className="fa fa-arrow-down"></i></Link>

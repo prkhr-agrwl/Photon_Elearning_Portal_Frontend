@@ -107,7 +107,7 @@ const Menu = [
       { path: '/version/html', title: 'HTML' },
       { path: '/version/ajax', title: 'AJAX' },
       { path: '/version/angularjs', title: 'ANGULAR JS' },
-      { path: '/version/angularjs6', title: 'ANGULAR JS 6', highlight: true },
+      { path: '/version/angularjs8', title: 'ANGULAR JS 8', highlight: true },
       { path: '/version/laravel', title: 'LARAVEL', highlight: true },
       { path: '/version/material', title: 'MATERIAL DESIGN' },
       { path: '/version/apple', title: 'APPLE DESIGN' },
