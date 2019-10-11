@@ -1,17 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Panel,
-  PanelHeader,
-  PanelBody,
-  PanelFooter
-} from './../../components/panel/panel.jsx';
+import { Panel, PanelHeader } from './../../components/panel/panel.jsx';
 
 class DashboardV1 extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

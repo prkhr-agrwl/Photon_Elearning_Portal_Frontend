@@ -48,8 +48,13 @@ const ChapterComponent = () => {
               }
               onClick={() => toggleCollapse(chapter.id)}
             >
-              <i className='fa fa-circle f-s-8 mr-2 text-indigo'></i>{' '}
+              <i className='fa fa-book fa-2x f-s-8 mr-2 text-teal'></i>{' '}
               <Link>{chapter.title}</Link>
+              <div className='btn-group btn-group-justified pull-right'>
+                <Link className='btn btn-xs btn-default'>Rename</Link>
+                <Link className='btn btn-xs btn-primary'>Edit</Link>
+                <Link className='btn btn-xs btn-danger'>Delete</Link>
+              </div>
             </CardHeader>
             <Collapse isOpen={chapter.collapse}>
               <CardBody>

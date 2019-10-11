@@ -26,7 +26,7 @@ const Menu = [
   },
   {
     path: '/bootstrap-4',
-    img: '/assets/img/logo/logo-bs4.png',
+    icon: 'fa fa-gem',
     title: 'Students'
   },
   {

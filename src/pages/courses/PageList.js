@@ -1,78 +1,73 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Collapse, CardHeader, CardBody, Card } from 'reactstrap';
-import PageList from './PageList';
+import { Collapse, CardHeader, Card } from 'reactstrap';
 
-const TopicComponent = () => {
-  const [topic, setTopic] = useState([
+const PageList = () => {
+  const [page, setPage] = useState([
     {
       id: 0,
       collapse: false,
-      title: 'topic1'
+      title: 'page1'
     },
     {
       id: 1,
       collapse: false,
-      title: 'topic2'
+      title: 'page2'
     }
   ]);
   const toggleCollapse = index => {
-    const newArray = [...topic];
+    const newArray = [...page];
     newArray[index] = {
       ...newArray[index],
       collapse: !newArray[index].collapse
     };
-    setTopic(newArray);
+    setPage(newArray);
     // console.log(newArray);
   };
   const handleAdd = () => {
     const text = prompt('');
-    const newArray = [...topic];
-    newArray[topic.length] = {
-      id: topic.length,
+    const newArray = [...page];
+    newArray[page.length] = {
+      id: page.length,
       collapse: false,
       title: text
     };
-    setTopic(newArray);
+    setPage(newArray);
     // console.log(newArray);
   };
   return (
     <Fragment>
       <div id='accordion' className='accordion'>
-        {topic.map((topic, i) => (
-          <Card className='bg-dark text-white' key={i}>
+        {page.map((page, i) => (
+          <Card className='bg-dark text-inverse' key={i}>
             <CardHeader
               className={
                 'card-header bg-dark-darker text-white pointer-cursor ' +
-                (!topic.collapse ? 'collapsed ' : '')
+                (!page.collapse ? 'collapsed ' : '')
               }
-              onClick={() => toggleCollapse(topic.id)}
+              onClick={() => toggleCollapse(page.id)}
             >
               <i className='fa fa-book fa-2x f-s-8 mr-2 text-teal'></i>{' '}
-              <Link>{topic.title}</Link>
+              <Link>{page.title}</Link>
               <div className='btn-group btn-group-justified pull-right'>
                 <Link className='btn btn-xs btn-default'>Rename</Link>
                 <Link className='btn btn-xs btn-primary'>Edit</Link>
                 <Link className='btn btn-xs btn-danger'>Delete</Link>
               </div>
             </CardHeader>
-            <Collapse isOpen={topic.collapse}>
-              <CardBody>
-                <PageList />
-              </CardBody>
-            </Collapse>
+            <Collapse isOpen={page.collapse}></Collapse>
           </Card>
         ))}
         <hr />
         <button
-          onClick={e => handleAdd()} //a prop has to be passed in here to tell which chapter this topic has to be added to
+          onClick={e => handleAdd()} //a prop has to be passed in here to tell which chapter this page has to be added to
           className='btn btn-primary btn-block m-b-5'
         >
-          Add Topic
+          Add page
         </button>
       </div>
     </Fragment>
   );
 };
 
-export default TopicComponent;
+export default PageList;

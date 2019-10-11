@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Collapse, CardHeader, CardBody, Card } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import PageList from './PageList';
 
 const TopicComponent = () => {
   const [topic, setTopic] = useState([
@@ -33,7 +34,7 @@ const TopicComponent = () => {
       title: text
     };
     setTopic(newArray);
-    console.log(newArray);
+    // console.log(newArray);
   };
   return (
     <Fragment>
@@ -47,11 +48,19 @@ const TopicComponent = () => {
               }
               onClick={() => toggleCollapse(topic.id)}
             >
-              <i className='fa fa-circle f-s-8 mr-2 text-indigo'></i>{' '}
+              <i className='fa fa-book fa-2x f-s-8 mr-2 text-teal'></i>{' '}
               <Link>{topic.title}</Link>
-              <Link className='pull-right'>Add Page</Link>
+              <div className='btn-group btn-group-justified pull-right'>
+                <Link className='btn btn-xs btn-default'>Rename</Link>
+                <Link className='btn btn-xs btn-primary'>Edit</Link>
+                <Link className='btn btn-xs btn-danger'>Delete</Link>
+              </div>
             </CardHeader>
-            <Collapse isOpen={topic.collapse}></Collapse>
+            <Collapse isOpen={topic.collapse}>
+              <CardBody>
+                <PageList />
+              </CardBody>
+            </Collapse>
           </Card>
         ))}
         <hr />

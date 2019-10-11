@@ -22,7 +22,7 @@ class Header extends React.Component {
 		return (
 			<PageSettings.Consumer>
 				{({toggleMobileSidebar, toggleRightSidebar, toggleMobileRightSidebar,toggleMobileTopMenu, pageHeaderLanguageBar, pageHeaderMegaMenu, pageTwoSidebar, pageTopMenu, pageSidebar}) => (
-					<div id="header" className="header navbar-default">
+					<div id="header" className="header navbar-inverse">
 						<div className="navbar-header">
 							{pageTwoSidebar && (
 								<button type="button" className="navbar-toggle pull-left" onClick={toggleMobileRightSidebar}>

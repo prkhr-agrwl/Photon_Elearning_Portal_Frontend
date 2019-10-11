@@ -1,9 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import {
   Panel,
   PanelHeader,
-  PanelBody,
-  PanelFooter
+  PanelBody
 } from '../../components/panel/panel.jsx';
 import DomainComponent from './DomainComponent.js';
 
@@ -14,7 +13,7 @@ const KnowledgeDomain = () => {
         <h1 className='page-header'>
           Knowledge Domains <small></small>
         </h1>
-        <Panel>
+        <Panel theme='inverse' className='bg-success'>
           <PanelHeader>DOMAINS</PanelHeader>
           <PanelBody>
             <DomainComponent />
