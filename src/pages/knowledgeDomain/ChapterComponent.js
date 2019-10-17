@@ -4,6 +4,7 @@ import TopicComponent from './TopicComponent.js';
 import { Link } from 'react-router-dom';
 
 const ChapterComponent = () => {
+  const [newTitle, setNewTitle] = useState('');
   const [chapter, setChapter] = useState([
     {
       id: 0,
@@ -25,15 +26,18 @@ const ChapterComponent = () => {
     setChapter(newArray);
     // console.log(newArray);
   };
-  const handleAdd = () => {
-    const text = prompt('');
+  const onChange = e => {
+    setNewTitle(e.target.value);
+  };
+  const handleAdd = newTitle => {
     const newArray = [...chapter];
     newArray[chapter.length] = {
       id: chapter.length,
       collapse: false,
-      title: text
+      title: newTitle
     };
     setChapter(newArray);
+    setNewTitle('');
     // console.log(newArray);
   };
   return (
@@ -51,7 +55,6 @@ const ChapterComponent = () => {
               <i className='fa fa-book fa-2x f-s-8 mr-2 text-teal'></i>{' '}
               <Link>{chapter.title}</Link>
               <div className='btn-group btn-group-justified pull-right'>
-                <Link className='btn btn-xs btn-default'>Rename</Link>
                 <Link className='btn btn-xs btn-primary'>Edit</Link>
                 <Link className='btn btn-xs btn-danger'>Delete</Link>
               </div>
@@ -65,12 +68,26 @@ const ChapterComponent = () => {
           </Card>
         ))}
         <hr />
-        <button
-          onClick={e => handleAdd()} //a prop has to be passed in here to tell which domain this chapter has to be added to
-          className='btn btn-primary btn-block m-b-5'
-        >
-          Add Chapter
-        </button>
+        <div className='row'>
+          <div className='col-6'>
+            <input
+              className='form-control'
+              required
+              type='text'
+              value={newTitle}
+              placeholder='Enter New Chapter Name.'
+              onChange={e => onChange(e)}
+            />
+          </div>
+          <div className='col-6'>
+            <button
+              onClick={e => handleAdd(newTitle)}
+              className='btn btn-primary btn-block m-b-5'
+            >
+              Add Chapter
+            </button>
+          </div>
+        </div>
       </div>
     </Fragment>
   );

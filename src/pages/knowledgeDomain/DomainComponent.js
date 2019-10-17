@@ -4,6 +4,7 @@ import ChapterComponent from './ChapterComponent';
 import { Link } from 'react-router-dom';
 
 const DomainComponent = () => {
+  const [newTitle, setNewTitle] = useState('');
   const [domain, setDomain] = useState([
     {
       id: 0,
@@ -29,15 +30,18 @@ const DomainComponent = () => {
     };
     setDomain(newArray);
   };
-  const handleAdd = () => {
-    const text = prompt('');
+  const onChange = e => {
+    setNewTitle(e.target.value);
+  };
+  const handleAdd = newTitle => {
     const newArray = [...domain];
     newArray[domain.length] = {
       id: domain.length,
       collapse: false,
-      title: text
+      title: newTitle
     };
     setDomain(newArray);
+    setNewTitle('');
     // console.log(newArray);
   };
   return (
@@ -55,7 +59,6 @@ const DomainComponent = () => {
               <i className='fa fa-book fa-2x f-s-8 mr-2 text-teal'></i>{' '}
               <Link>{domain.title}</Link>
               <div className='btn-group btn-group-justified pull-right'>
-                <Link className='btn btn-xs btn-default'>Rename</Link>
                 <Link className='btn btn-xs btn-primary'>Edit</Link>
                 <Link className='btn btn-xs btn-danger'>Delete</Link>
               </div>
@@ -69,12 +72,26 @@ const DomainComponent = () => {
           </Card>
         ))}
         <hr />
-        <button
-          onClick={e => handleAdd()}
-          className='btn btn-primary btn-block m-b-5'
-        >
-          Add Domain
-        </button>
+        <div className='row'>
+          <div className='col-6'>
+            <input
+              className='form-control'
+              required
+              type='text'
+              value={newTitle}
+              placeholder='Enter New Domain Name.'
+              onChange={e => onChange(e)}
+            />
+          </div>
+          <div className='col-6'>
+            <button
+              onClick={e => handleAdd(newTitle)}
+              className='btn btn-primary btn-block m-b-5'
+            >
+              Add Domain
+            </button>
+          </div>
+        </div>
       </div>
     </Fragment>
   );

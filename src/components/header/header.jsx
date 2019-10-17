@@ -23,6 +23,7 @@ class Header extends React.Component {
       <PageSettings.Consumer>
         {({
           toggleSidebarMinify,
+          toggleSidebar,
           toggleMobileSidebar,
           toggleRightSidebar,
           toggleMobileRightSidebar,
@@ -35,6 +36,13 @@ class Header extends React.Component {
         }) => (
           <div id='header' className='header navbar-inverse'>
             <div className='navbar-header'>
+              <div className='navbar-toggler pull-left'>
+                <li className='d-none d-md-block'>
+                  <Link to='/' onClick={toggleSidebar} className='f-s-14'>
+                    <i className='fas fa-bars text-grey'></i>
+                  </Link>
+                </li>
+              </div>
               {pageTwoSidebar && (
                 <button
                   type='button'
@@ -119,11 +127,6 @@ class Header extends React.Component {
                   </Link>
                 </li>
               )}
-              <li className='d-none d-md-block'>
-                <Link to='/' onClick={toggleSidebarMinify} className='f-s-14'>
-                  <i className='fas fa-bars'></i>
-                </Link>
-              </li>
             </ul>
           </div>
         )}

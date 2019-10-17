@@ -25,11 +25,18 @@ class App extends React.Component {
 				pageSidebarMinify: !this.state.pageSidebarMinify
 			}));
 		}
+		this.toggleSidebar = (e) => {
+			e.preventDefault();
+			this.setState(state => ({
+				pageSidebar: !this.state.pageSidebar
+			}));
+		}
 		this.toggleMobileSidebar = (e) => {
 			this.setState(state => ({
 				pageSidebarToggled: !this.state.pageSidebarToggled
 			}));
 		}
+		
 		this.handleSetPageSidebar = (value) => {
 			this.setState(state => ({
 				pageSidebar: value
@@ -283,6 +290,7 @@ class App extends React.Component {
 			handleSidebarOnMouseOut: this.handleSidebarOnMouseOut,
 			handleSidebarOnMouseOver: this.handleSidebarOnMouseOver,
 			toggleSidebarMinify: this.toggleSidebarMinify,
+			toggleSidebar: this.toggleSidebar,
 			toggleMobileSidebar: this.toggleMobileSidebar,
 			
 			pageFloatSubMenuActive: false,
