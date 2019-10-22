@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
 import AssignmentType from './AssignmentType';
 import TextType from './TextType';
 import QuizType from './QuizType';
@@ -39,7 +38,7 @@ const PageComponent = () => {
     const newArray = [...sections];
     newArray[sections.length] = {
       id: sections.length,
-      icon: secType, //add a switch case to assign icons acc to types
+      icon: assignIcon(secType), //add a switch case to assign icons acc to types
       title: newTitle,
       type: secType
     };
@@ -59,6 +58,38 @@ const PageComponent = () => {
         return <AssignmentType />;
       case 'quiz':
         return <QuizType />;
+      default:
+        return 'Please select the section type to see content adding options.';
+    }
+  };
+  const renderType = type => {
+    switch (type) {
+      case 'txt':
+        return 'TextSection';
+      case 'img':
+        return 'ImageSection';
+      case 'vid':
+        return 'VideoSection';
+      case 'asgn':
+        return 'Assignment';
+      case 'quiz':
+        return 'Quiz';
+      default:
+        return 'Please select the section type to see content adding options.';
+    }
+  };
+  const assignIcon = type => {
+    switch (type) {
+      case 'txt':
+        return 'paragraph';
+      case 'img':
+        return 'image';
+      case 'vid':
+        return 'video';
+      case 'asgn':
+        return 'edit';
+      case 'quiz':
+        return 'question';
       default:
         return 'Please select the section type to see content adding options.';
     }
@@ -91,7 +122,6 @@ const PageComponent = () => {
                       <option value='asgn'>Assigment</option>
                       <option value='quiz'>Quiz</option>
                     </select>
-                    {/* <Select options={this.selectOptions} /> */}
                   </div>
                 </div>
               </form>
@@ -123,7 +153,7 @@ const PageComponent = () => {
         <Panel key={key} theme='inverse' className='bg-success'>
           <PanelHeader noButton={true}>
             <i className={`fa fa-${section.icon} text-teal`}></i>{' '}
-            {`${section.title}`}
+            {renderType(section.type)} - {`${section.title}`}
             {/* add switch case to show sectype */}
             <UncontrolledDropdown className='pull-right'>
               <DropdownToggle caret className='btn-xs btn-success'>

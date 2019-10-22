@@ -19,7 +19,6 @@ const TextType = () => {
       adipisicing elit. Unde enim accusamus nisi molestias, sint tempore.
       Repellendus ut assumenda necessitatibus accusantium esse, eligendi
       voluptates officiis molestias commodi dolorum ratione, velit optio?</strong>'
-      disabled
     ></CKEditor>
   );
 };
