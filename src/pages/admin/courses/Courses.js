@@ -3,20 +3,20 @@ import {
   Panel,
   PanelHeader,
   PanelBody
-} from '../../components/panel/panel.jsx';
-import DomainComponent from './DomainComponent.js';
+} from '../../../components/panel/panel.jsx';
+import CourseComponent from './CourseComponent.js';
 
-const KnowledgeDomain = () => {
+const Courses = () => {
   return (
     <Fragment>
       <div>
         <h1 className='page-header'>
-          Knowledge Domains <small></small>
+          Courses <small></small>
         </h1>
         <Panel theme='inverse' className='bg-success'>
-          <PanelHeader>DOMAINS</PanelHeader>
+          <PanelHeader>COURSES</PanelHeader>
           <PanelBody>
-            <DomainComponent />
+            <CourseComponent />
           </PanelBody>
         </Panel>
       </div>
@@ -24,4 +24,4 @@ const KnowledgeDomain = () => {
   );
 };
 
-export default KnowledgeDomain;
+export default Courses;

@@ -16,7 +16,7 @@ import {
   PanelHeader,
   PanelBody,
   PanelFooter
-} from '../../components/panel/panel.jsx';
+} from '../../../components/panel/panel.jsx';
 
 const PageComponent = () => {
   const [newTitle, setNewTitle] = useState('');
