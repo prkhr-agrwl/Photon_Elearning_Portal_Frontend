@@ -12,7 +12,7 @@ const UrlField = ({ getModal }) => {
     e.preventDefault();
     setUrl('');
   };
-  const handleUpload = () => {
+  const handleAdd = () => {
     //add logic to upload the content
   };
   return (
@@ -41,10 +41,10 @@ const UrlField = ({ getModal }) => {
           Preview
         </button>
         <button
-          onClick={e => handleUpload()}
+          onClick={e => handleAdd()}
           className='btn btn-sm btn-primary m-r-5'
         >
-          Upload Content
+          Save
         </button>
       </form>
     </Fragment>

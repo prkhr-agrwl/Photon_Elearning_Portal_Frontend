@@ -29,7 +29,7 @@ const VideoType = () => {
   return (
     <Fragment>
       <Card className='border-0 bg-success'>
-        <CardHeader className='f-w-600'>Theory As Videos</CardHeader>
+        <CardHeader className='f-w-600'>Video</CardHeader>
 
         <CardBody>
           {urlList.map((field, key) => (

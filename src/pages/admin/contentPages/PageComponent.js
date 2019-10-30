@@ -22,11 +22,18 @@ const PageComponent = () => {
   const [newTitle, setNewTitle] = useState('');
   const [secType, setSecType] = useState('');
   const [sections, setSections] = useState([
-    { id: 0, type: 'txt', title: 'textSec#1', icon: 'paragraph' },
-    { id: 1, type: 'img', title: 'imageSec#1', icon: 'image' },
-    { id: 2, type: 'vid', title: 'videoSec#1', icon: 'video' },
-    { id: 3, type: 'asgn', title: 'assgnSec#1', icon: 'edit' },
-    { id: 4, type: 'quiz', title: 'quizSec#1', icon: 'question' }
+    {
+      id: 0,
+      type: 'txt',
+      title: 'textSec#1',
+      icon: 'paragraph',
+      data:
+        '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nobis minus obcaecati cupiditate quia sint molestias, iusto accusamus magnam quasi illo et. Dolor aliquam quibusdam quam labore, est quo possimus!</p>'
+    },
+    { id: 1, type: 'img', title: 'imageSec#1', icon: 'image', data: '' },
+    { id: 2, type: 'vid', title: 'videoSec#1', icon: 'video', data: '' },
+    { id: 3, type: 'asgn', title: 'assgnSec#1', icon: 'edit', data: '' },
+    { id: 4, type: 'quiz', title: 'quizSec#1', icon: 'question', data: '' }
   ]);
   const onTitleChange = e => {
     setNewTitle(e.target.value);
@@ -34,22 +41,37 @@ const PageComponent = () => {
   const onTypeChange = e => {
     setSecType(e.target.value);
   };
-  const handleAdd = (newTitle, secType) => {
+  const onTextSave = (newText, id) => {
     const newArray = [...sections];
-    newArray[sections.length] = {
-      id: sections.length,
-      icon: assignIcon(secType), //add a switch case to assign icons acc to types
-      title: newTitle,
-      type: secType
-    };
+    newArray[id] = { ...newArray[id], data: newText };
+    setSections(newArray);
+    console.log(newArray);
+  };
+  const handleAdd = (newTitle, secType) => {
+    const newArray = [
+      ...sections,
+      {
+        id: sections.length,
+        icon: assignIcon(secType), //add a switch case to assign icons acc to types
+        title: newTitle,
+        type: secType,
+        data: ''
+      }
+    ];
     setSections(newArray);
     setNewTitle('');
     console.log(newArray);
   };
-  const renderContent = type => {
+  const renderContent = (section, type) => {
     switch (type) {
       case 'txt':
-        return <TextType />;
+        return (
+          <TextType
+            text={section.data || ''}
+            isNew={section === 'new'}
+            onSave={newText => onTextSave(newText, section.id)}
+          />
+        );
       case 'img':
         return <ImageType />;
       case 'vid':
@@ -99,7 +121,7 @@ const PageComponent = () => {
       <h1 className='page-header'>PageName</h1>
       <Panel theme='inverse' className='bg-info'>
         <PanelHeader>ADD NEW SECTION</PanelHeader>
-        <PanelBody>{renderContent(secType)}</PanelBody>
+        <PanelBody>{renderContent('new', secType)}</PanelBody>
         <PanelFooter>
           <div className='row'>
             <div className='col-4'>
@@ -154,7 +176,6 @@ const PageComponent = () => {
           <PanelHeader noButton={true}>
             <i className={`fa fa-${section.icon} text-teal`}></i>{' '}
             {renderType(section.type)} - {`${section.title}`}
-            {/* add switch case to show sectype */}
             <UncontrolledDropdown className='pull-right'>
               <DropdownToggle caret className='btn-xs btn-success'>
                 Options
@@ -165,7 +186,7 @@ const PageComponent = () => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </PanelHeader>
-          <PanelBody>{renderContent(section.type)}</PanelBody>
+          <PanelBody>{renderContent(section, section.type)}</PanelBody>
         </Panel>
       ))}
     </Fragment>

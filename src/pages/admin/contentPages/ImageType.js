@@ -29,7 +29,7 @@ const ImageType = () => {
   return (
     <Fragment>
       <Card className='border-0 bg-success'>
-        <CardHeader className='f-w-600'>Theory As Images</CardHeader>
+        <CardHeader className='f-w-600'>Image</CardHeader>
         <CardBody>
           {urlList.map((field, key) => (
             <div key={key}>
