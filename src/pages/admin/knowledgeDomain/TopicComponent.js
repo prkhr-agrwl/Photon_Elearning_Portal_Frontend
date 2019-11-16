@@ -1,23 +1,62 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Collapse, CardHeader, CardBody, Card } from "reactstrap";
 import PageList from "./PageList";
+import Axios from "axios";
 
-const TopicComponent = () => {
+const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
   const [newTitle, setNewTitle] = useState("");
   const [valid, setValid] = useState(0);
   const [topic, setTopic] = useState([
-    {
-      id: 0,
-      collapse: false,
-      title: "topic1"
-    },
-    {
-      id: 1,
-      collapse: false,
-      title: "topic2"
-    }
+    // {
+    //   id: 0,
+    //   collapse: false,
+    //   title: "topic1"
+    // },
+    // {
+    //   id: 1,
+    //   collapse: false,
+    //   title: "topic2"
+    // }
   ]);
+  const getTopics = async () => {
+    const res = await Axios.get(
+      `https://frozen-temple-25034.herokuapp.com/admin/topics/${chapter_id}`
+    );
+    console.log(res.data);
+    setTopic(res.data);
+    // res.data.filter(obj => obj.subject_id === subject_id);
+  };
+  const addTopic = async title => {
+    const res = await Axios.post(
+      `https://frozen-temple-25034.herokuapp.com/admin/addtopics/${chapter_id}`,
+      {
+        chapter_id: chapter_id,
+        topicTitle: title,
+        chapterTitle: chapter_title,
+        topicDescription: ""
+      }
+    );
+    console.log(res.data);
+    alert(res.data.message);
+  };
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+    const res = await Axios.delete(
+      `https://frozen-temple-25034.herokuapp.com/admin/topic/${id}`
+    );
+    console.log(res.data);
+    alert(res.data);
+  };
+  useEffect(() => {
+    getTopics();
+  }, []);
+  useEffect(() => {
+    const withCollapse = [...topic];
+    withCollapse.map(obj => (obj.collapse = false));
+    setTopic(withCollapse);
+    console.log(topic);
+  }, [topic.length]);
   const toggleCollapse = index => {
     const newArray = [...topic];
     newArray[index] = {
@@ -37,13 +76,14 @@ const TopicComponent = () => {
     if (newTitle === "") {
       setValid(-1);
     } else {
-      const newArray = [...topic];
-      newArray[topic.length] = {
-        id: topic.length,
-        collapse: false,
-        title: newTitle
-      };
-      setTopic(newArray);
+      addTopic(newTitle);
+      // const newArray = [...topic];
+      // newArray[topic.length] = {
+      //   id: topic.length,
+      //   collapse: false,
+      //   title: newTitle
+      // };
+      // setTopic(newArray);
       setNewTitle("");
       setValid(0);
     }
@@ -59,18 +99,28 @@ const TopicComponent = () => {
                 "card-header bg-dark-darker text-white pointer-cursor " +
                 (!topic.collapse ? "collapsed " : "")
               }
-              onClick={() => toggleCollapse(topic.id)}
+              onClick={() => toggleCollapse(i)}
             >
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
-              <Link>{topic.title}</Link>
+              <Link>{topic.topic_title}</Link>
               <div className="btn-group btn-group-justified pull-right">
-                <Link className="btn btn-xs btn-primary">Edit</Link>
-                <Link className="btn btn-xs btn-danger">Delete</Link>
+                <Link className="btn btn-xs btn-primary">Rename</Link>
+                <Link
+                  onClick={e => handleDelete(e, topic._id)}
+                  className="btn btn-xs btn-danger"
+                >
+                  Delete
+                </Link>
               </div>
             </CardHeader>
             <Collapse isOpen={topic.collapse}>
               <CardBody>
-                <PageList />
+                <PageList
+                  subject_id={subject_id}
+                  chapter_id={chapter_id}
+                  topic_id={topic._id}
+                  topic_title={topic.topic_title}
+                />
               </CardBody>
             </Collapse>
           </Card>

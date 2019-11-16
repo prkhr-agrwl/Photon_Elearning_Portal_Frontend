@@ -103,7 +103,7 @@ const routes = [
     component: () => <Courses />
   },
   {
-    path: "/knowledgeDomains/chapterName/topicName/pageName/edit",
+    path: "/knowledgeDomains/:subject_id/:chapter_id/:topic_id/:page_id/edit",
     title: "PageName",
     component: () => <PageComponent />
   },

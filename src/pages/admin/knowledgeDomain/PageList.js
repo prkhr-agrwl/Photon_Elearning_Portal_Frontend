@@ -1,25 +1,61 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import SweetAlert from "react-bootstrap-sweetalert";
 import { Collapse, CardHeader, Card } from "reactstrap";
+import Axios from "axios";
 
-const PageList = () => {
+const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
   const [newTitle, setNewTitle] = useState("");
-  const [deleteAlert, setDeleteAlert] = useState(false);
-  const [delId, setdelId] = useState("");
   const [valid, setValid] = useState(0);
   const [page, setPage] = useState([
-    {
-      id: 0,
-      collapse: false,
-      title: "page1"
-    },
-    {
-      id: 1,
-      collapse: false,
-      title: "page2"
-    }
+    // {
+    //   id: 0,
+    //   collapse: false,
+    //   title: "page1"
+    // },
+    // {
+    //   id: 1,
+    //   collapse: false,
+    //   title: "page2"
+    // }
   ]);
+  const getPages = async () => {
+    const res = await Axios.get(
+      `https://frozen-temple-25034.herokuapp.com/admin/pages/${topic_id}`
+    );
+    console.log(res.data);
+    setPage(res.data);
+    // res.data.filter(obj => obj.subject_id === subject_id);
+  };
+  const addPage = async title => {
+    const res = await Axios.post(
+      `https://frozen-temple-25034.herokuapp.com/admin/addpages/${topic_id}`,
+      {
+        topic_id: topic_id,
+        page_title: title,
+        topicTitle: topic_title,
+        page_type: ""
+      }
+    );
+    console.log(res.data);
+    alert(res.data.message);
+  };
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+    const res = await Axios.delete(
+      `https://frozen-temple-25034.herokuapp.com/admin/page/${id}`
+    );
+    console.log(res.data);
+    alert(res.data);
+  };
+  useEffect(() => {
+    getPages();
+  }, []);
+  useEffect(() => {
+    const withCollapse = [...page];
+    withCollapse.map(obj => (obj.collapse = false));
+    setPage(withCollapse);
+    console.log(page);
+  }, [page.length]);
   const toggleCollapse = index => {
     const newArray = [...page];
     newArray[index] = {
@@ -39,28 +75,18 @@ const PageList = () => {
     if (newTitle === "") {
       setValid(-1);
     } else {
-      const newArray = [...page];
-      newArray[page.length] = {
-        id: page[page.length - 1].id + 1,
-        collapse: false,
-        title: newTitle
-      };
-      setPage(newArray);
+      addPage(newTitle);
+      // const newArray = [...page];
+      // newArray[page.length] = {
+      //   id: page[page.length - 1].id + 1,
+      //   collapse: false,
+      //   title: newTitle
+      // };
+      // setPage(newArray);
       setNewTitle("");
       setValid(0);
       // console.log(newArray);
     }
-  };
-  const handleDelete = delId => {
-    setDeleteAlert(!deleteAlert);
-    console.log(delId);
-    const newArray = page.filter(obj => {
-      return obj.id !== delId;
-    });
-    console.log(newArray);
-    setPage(newArray);
-    console.log(page);
-    setdelId("");
   };
   return (
     <Fragment>
@@ -72,42 +98,23 @@ const PageList = () => {
                 "card-header bg-dark-darker text-white pointer-cursor " +
                 (!page.collapse ? "collapsed " : "")
               }
-              onClick={() => toggleCollapse(page.id)}
+              onClick={() => toggleCollapse(i)}
             >
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
-              <Link>{page.title}</Link>
+              <Link>{page.page_title}</Link>
               <div className="btn-group btn-group-justified pull-right">
                 <Link
                   className="btn btn-xs btn-primary"
-                  to="/knowledgeDomains/chapterName/topicName/pageName/edit"
+                  to={`/knowledgeDomains/${subject_id}/${chapter_id}/${topic_id}/${page._id}/edit`}
                 >
                   Edit
                 </Link>
-                <button
-                  onClick={e => {
-                    setdelId(page.id);
-                    setDeleteAlert(!deleteAlert);
-                  }}
+                <Link
+                  onClick={e => handleDelete(e, page._id)}
                   className="btn btn-xs btn-danger"
                 >
                   Delete
-                </button>
-                {deleteAlert && (
-                  <SweetAlert
-                    danger
-                    showCancel
-                    confirmBtnText="Yes, delete it!"
-                    confirmBtnBsStyle="danger"
-                    cancelBtnBsStyle="default"
-                    title="Are you sure?"
-                    onConfirm={e => handleDelete(delId)}
-                    onCancel={e => {
-                      setDeleteAlert(!deleteAlert);
-                    }}
-                  >
-                    You will not be able to undo this action.
-                  </SweetAlert>
-                )}
+                </Link>
               </div>
             </CardHeader>
             <Collapse isOpen={page.collapse}></Collapse>

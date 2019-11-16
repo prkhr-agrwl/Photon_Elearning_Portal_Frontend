@@ -41,12 +41,15 @@ const DomainComponent = () => {
       }
     );
     console.log(res.data);
+    alert(res.data.message);
   };
   const handleDelete = async (e, id) => {
+    e.stopPropagation();
     const res = await Axios.delete(
       `https://frozen-temple-25034.herokuapp.com/admin/subject/${id}`
     );
     console.log(res.data);
+    alert(res.data);
   };
   useEffect(() => {
     getSubjects();
@@ -114,7 +117,10 @@ const DomainComponent = () => {
             </CardHeader>
             <Collapse isOpen={domain.collapse}>
               <CardBody>
-                <ChapterComponent subjectid={domain._id} />
+                <ChapterComponent
+                  subject_id={domain._id}
+                  subject_title={domain.subject_title}
+                />
                 {/* we need to pass a prop here to tell the child components which kd it is */}
               </CardBody>
             </Collapse>
