@@ -87,7 +87,7 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
               onClick={() => toggleCollapse(i)}
             >
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
-              <Link>{chapter.chapterTitle}</Link>
+              <a>{chapter.chapterTitle}</a>
               <div className="btn-group btn-group-justified pull-right">
                 <Link className="btn btn-xs btn-primary">Rename</Link>
                 <Link

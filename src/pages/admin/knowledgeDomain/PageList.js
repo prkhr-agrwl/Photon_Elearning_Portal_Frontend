@@ -86,7 +86,11 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
               onClick={() => toggleCollapse(i)}
             >
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
-              <Link>{page.page_title}</Link>
+              <Link
+                to={`/knowledgeDomains/${subject_id}/${chapter_id}/${topic_id}/${page._id}/edit`}
+              >
+                {page.page_title}
+              </Link>
               <div className="btn-group btn-group-justified pull-right">
                 <Link
                   className="btn btn-xs btn-primary"
