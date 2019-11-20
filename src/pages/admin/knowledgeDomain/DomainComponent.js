@@ -1,29 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Collapse, CardHeader, CardBody, Card } from "reactstrap";
 import ChapterComponent from "./ChapterComponent";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Axios from "axios";
 
 const DomainComponent = () => {
   const [newTitle, setNewTitle] = useState("");
   const [valid, setValid] = useState(0);
-  const [domain, setDomain] = useState([
-    // {
-    //   id: 0,
-    //   collapse: false,
-    //   title: "Physics"
-    // },
-    // {
-    //   id: 1,
-    //   collapse: false,
-    //   title: "Chemistry"
-    // },
-    // {
-    //   id: 2,
-    //   collapse: false,
-    //   title: "Maths"
-    // }
-  ]);
+  const [domain, setDomain] = useState([]);
 
   const getSubjects = async () => {
     const res = await Axios.get(
@@ -43,6 +27,17 @@ const DomainComponent = () => {
     console.log(res.data);
     alert(res.data.message);
   };
+  const renameSubject = async (title, id) => {
+    const res = await Axios.put(
+      `https://frozen-temple-25034.herokuapp.com/admin/subject/${id}`,
+      {
+        subjectTitle: title,
+        subjectDescription: ""
+      }
+    );
+    console.log(res.data);
+    alert(res.data.message);
+  };
   const handleDelete = async (e, id) => {
     e.stopPropagation();
     const res = await Axios.delete(
@@ -51,12 +46,19 @@ const DomainComponent = () => {
     console.log(res.data);
     alert(res.data);
   };
+  const handleEdit = (e, id) => {
+    e.stopPropagation();
+    renameSubject();
+  };
   useEffect(() => {
     getSubjects();
   }, []);
   useEffect(() => {
     const withCollapse = [...domain];
-    withCollapse.map(obj => (obj.collapse = false));
+    withCollapse.map(obj => {
+      obj.collapse = false;
+      obj.rename = false;
+    });
     setDomain(withCollapse);
     console.log(domain);
   }, [domain.length]);
@@ -79,16 +81,8 @@ const DomainComponent = () => {
       setValid(-1);
     } else {
       addSubject(newTitle);
-      // const newArray = [...domain];
-      // newArray[domain.length] = {
-      //   id: domain.length,
-      //   collapse: false,
-      //   subject_title: newTitle
-      // };
-      // setDomain(newArray);
       setNewTitle("");
       setValid(0);
-      // console.log(newArray);
     }
   };
   return (
@@ -105,14 +99,33 @@ const DomainComponent = () => {
             >
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
               <a>{domain.subject_title}</a>
+              <div>
+                <input
+                  className={`form-control ${
+                    valid === 1 ? "is-valid" : valid === -1 ? "is-invalid" : ""
+                  }`}
+                  type="text"
+                  value={newTitle}
+                  placeholder="Enter New Domain Name."
+                  onChange={e => onChange(e)}
+                />
+                <div className="invalid-tooltip">
+                  This field can't be empty.
+                </div>
+              </div>
               <div className="btn-group btn-group-justified pull-right">
-                <Link className="btn btn-xs btn-primary">Rename</Link>
-                <Link
+                <button
+                  onClick={e => handleEdit(e, domain._id)}
+                  className="btn btn-xs btn-primary"
+                >
+                  Rename
+                </button>
+                <button
                   onClick={e => handleDelete(e, domain._id)}
                   className="btn btn-xs btn-danger"
                 >
                   Delete
-                </Link>
+                </button>
               </div>
             </CardHeader>
             <Collapse isOpen={domain.collapse}>
@@ -121,7 +134,6 @@ const DomainComponent = () => {
                   subject_id={domain._id}
                   subject_title={domain.subject_title}
                 />
-                {/* we need to pass a prop here to tell the child components which kd it is */}
               </CardBody>
             </Collapse>
           </Card>
