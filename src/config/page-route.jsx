@@ -4,7 +4,6 @@ import { Redirect } from "react-router";
 import DashboardV1 from "./../pages/dashboard/dashboard-v1.js";
 import DashboardV2 from "./../pages/dashboard/dashboard-v2.js";
 import DashboardV3 from "./../pages/dashboard/dashboard-v3.js";
-import SignIn from "./../pages/admin/signIn/signIn.js";
 import KnowledgeDomain from "./../pages/admin/knowledgeDomain/KnowledgeDomain.js";
 import Courses from "./../pages/admin/courses/Courses.js";
 import PageComponent from "./../pages/admin/contentPages/PageComponent.js";
@@ -58,7 +57,7 @@ import ExtraError from "./../pages/extra/extra-error.js";
 import ExtraProfile from "./../pages/extra/extra-profile.js";
 import LoginV1 from "./../pages/user/login-v1.js";
 import LoginV2 from "./../pages/user/login-v2.js";
-import LoginV3 from "./../pages/user/login-v3.js";
+import Login from "./../pages/user/login-v3.js";
 import RegisterV3 from "./../pages/user/register-v3.js";
 import HelperCSS from "./../pages/helper/helper-css.js";
 
@@ -91,10 +90,10 @@ const routes = [
     component: () => <KnowledgeDomain />
   },
   {
-    path: "/signIn",
+    path: "/login",
     exact: true,
-    title: "SignIn",
-    component: () => <SignIn />
+    title: "Login",
+    component: () => <Login />
   },
   {
     path: "/courses",
@@ -357,11 +356,11 @@ const routes = [
     title: "Login v2",
     component: () => <LoginV2 />
   },
-  {
-    path: "/user/login-v3",
-    title: "Login v3",
-    component: () => <LoginV3 />
-  },
+  // {
+  //   path: "/user/login-v3",
+  //   title: "Login v3",
+  //   component: () => <LoginV3 />
+  // },
   {
     path: "/user/register-v3",
     title: "Register v3",

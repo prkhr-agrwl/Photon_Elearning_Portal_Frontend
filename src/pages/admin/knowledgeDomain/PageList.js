@@ -135,7 +135,7 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
               </Link>
               <div className="btn-group btn-group-justified pull-right">
                 <Link
-                  className="btn btn-xs btn-warningZ"
+                  className="btn btn-xs btn-success"
                   to={`/knowledgeDomains/${subject_id}/${chapter_id}/${topic_id}/${page._id}/edit`}
                 >
                   Edit

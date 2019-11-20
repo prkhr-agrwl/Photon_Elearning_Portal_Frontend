@@ -15,9 +15,9 @@ const Menu = [
     // ]
   },
   {
-    path: "/signIn",
+    path: "/login",
     icon: "fa fa-hdd",
-    title: "Sign In"
+    title: "Login"
     // children: [
     //   { path: '/knowledgeDomains/jee', title: 'JEE' },
     //   { path: '/knowledgeDomains/advanced', title: 'Advanced' },
