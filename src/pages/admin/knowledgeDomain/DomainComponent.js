@@ -14,7 +14,8 @@ const DomainComponent = () => {
       "https://frozen-temple-25034.herokuapp.com/admin/subjects"
     );
     console.log(res.data);
-    setDomain(res.data);
+    const newArray = res.data;
+    setDomain(newArray);
   };
   const addSubject = async title => {
     const res = await Axios.post(
@@ -26,6 +27,15 @@ const DomainComponent = () => {
     );
     console.log(res.data);
     alert(res.data.message);
+    getSubjects();
+  };
+  const deleteSubject = async id => {
+    const res = await Axios.delete(
+      `https://frozen-temple-25034.herokuapp.com/admin/subject/${id}`
+    );
+    console.log(res.data);
+    alert(res.data);
+    getSubjects();
   };
   const renameSubject = async (title, id) => {
     const res = await Axios.put(
@@ -37,18 +47,15 @@ const DomainComponent = () => {
     );
     console.log(res.data);
     alert(res.data.message);
+    getSubjects();
   };
   const handleDelete = async (e, id) => {
     e.stopPropagation();
-    const res = await Axios.delete(
-      `https://frozen-temple-25034.herokuapp.com/admin/subject/${id}`
-    );
-    console.log(res.data);
-    alert(res.data);
+    deleteSubject(id);
   };
   const handleEdit = (e, id) => {
     e.stopPropagation();
-    renameSubject();
+    renameSubject(id);
   };
   useEffect(() => {
     getSubjects();
@@ -81,6 +88,7 @@ const DomainComponent = () => {
       setValid(-1);
     } else {
       addSubject(newTitle);
+      // getSubjects();
       setNewTitle("");
       setValid(0);
     }

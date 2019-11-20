@@ -6,25 +6,14 @@ import Axios from "axios";
 const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
   const [newTitle, setNewTitle] = useState("");
   const [valid, setValid] = useState(0);
-  const [page, setPage] = useState([
-    // {
-    //   id: 0,
-    //   collapse: false,
-    //   title: "page1"
-    // },
-    // {
-    //   id: 1,
-    //   collapse: false,
-    //   title: "page2"
-    // }
-  ]);
+  const [page, setPage] = useState([]);
   const getPages = async () => {
     const res = await Axios.get(
       `https://frozen-temple-25034.herokuapp.com/admin/pages/${topic_id}`
     );
     console.log(res.data);
-    setPage(res.data);
-    // res.data.filter(obj => obj.subject_id === subject_id);
+    const newArray = res.data;
+    setPage(newArray);
   };
   const addPage = async title => {
     const res = await Axios.post(
@@ -38,14 +27,19 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
     );
     console.log(res.data);
     alert(res.data.message);
+    getPages();
   };
-  const handleDelete = async (e, id) => {
-    e.stopPropagation();
+  const deletePage = async id => {
     const res = await Axios.delete(
       `https://frozen-temple-25034.herokuapp.com/admin/page/${id}`
     );
     console.log(res.data);
     alert(res.data);
+    getPages();
+  };
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+    deletePage(id);
   };
   useEffect(() => {
     getPages();
@@ -63,7 +57,6 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
       collapse: !newArray[index].collapse
     };
     setPage(newArray);
-    // console.log(newArray);
   };
   const onChange = e => {
     setNewTitle(e.target.value);
@@ -76,16 +69,8 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
       setValid(-1);
     } else {
       addPage(newTitle);
-      // const newArray = [...page];
-      // newArray[page.length] = {
-      //   id: page[page.length - 1].id + 1,
-      //   collapse: false,
-      //   title: newTitle
-      // };
-      // setPage(newArray);
       setNewTitle("");
       setValid(0);
-      // console.log(newArray);
     }
   };
   return (

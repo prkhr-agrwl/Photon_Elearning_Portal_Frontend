@@ -7,25 +7,14 @@ import Axios from "axios";
 const ChapterComponent = ({ subject_id, subject_title }) => {
   const [newTitle, setNewTitle] = useState("");
   const [valid, setValid] = useState(0);
-  const [chapter, setChapter] = useState([
-    // {
-    //   id: 0,
-    //   collapse: false,
-    //   title: "ch1"
-    // },
-    // {
-    //   id: 1,
-    //   collapse: false,
-    //   title: "ch2"
-    // }
-  ]);
+  const [chapter, setChapter] = useState([]);
   const getChapters = async () => {
     const res = await Axios.get(
       `https://frozen-temple-25034.herokuapp.com/admin/chapters/${subject_id}`
     );
     console.log(res.data);
-    setChapter(res.data);
-    // res.data.filter(obj => obj.subject_id === subject_id);
+    const newArray = res.data;
+    setChapter(newArray);
   };
   const addChapter = async title => {
     const res = await Axios.post(
@@ -39,14 +28,19 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
     );
     console.log(res.data);
     alert(res.data.message);
+    getChapters();
   };
-  const handleDelete = async (e, id) => {
-    e.stopPropagation();
+  const deleteChapter = async id => {
     const res = await Axios.delete(
       `https://frozen-temple-25034.herokuapp.com/admin/chapter/${id}`
     );
     console.log(res.data);
     alert(res.data);
+    getChapters();
+  };
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+    deleteChapter(id);
   };
   useEffect(() => {
     getChapters();
@@ -64,7 +58,6 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
       collapse: !newArray[index].collapse
     };
     setChapter(newArray);
-    // console.log(newArray);
   };
   const onChange = e => {
     setNewTitle(e.target.value);
@@ -77,16 +70,8 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
       setValid(-1);
     } else {
       addChapter(newTitle);
-      //  const newArray = [...chapter];
-      //  newArray[chapter.length] = {
-      //    id: chapter.length,
-      //    collapse: false,
-      //    title: newTitle
-      //  };
-      //  setChapter(newArray);
       setNewTitle("");
       setValid(0);
-      // console.log(newArray);
     }
   };
   return (

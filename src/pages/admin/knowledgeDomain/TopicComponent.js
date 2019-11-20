@@ -7,25 +7,14 @@ import Axios from "axios";
 const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
   const [newTitle, setNewTitle] = useState("");
   const [valid, setValid] = useState(0);
-  const [topic, setTopic] = useState([
-    // {
-    //   id: 0,
-    //   collapse: false,
-    //   title: "topic1"
-    // },
-    // {
-    //   id: 1,
-    //   collapse: false,
-    //   title: "topic2"
-    // }
-  ]);
+  const [topic, setTopic] = useState([]);
   const getTopics = async () => {
     const res = await Axios.get(
       `https://frozen-temple-25034.herokuapp.com/admin/topics/${chapter_id}`
     );
     console.log(res.data);
-    setTopic(res.data);
-    // res.data.filter(obj => obj.subject_id === subject_id);
+    const newArray = res.data;
+    setTopic(newArray);
   };
   const addTopic = async title => {
     const res = await Axios.post(
@@ -39,14 +28,19 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
     );
     console.log(res.data);
     alert(res.data.message);
+    getTopics();
   };
-  const handleDelete = async (e, id) => {
-    e.stopPropagation();
+  const deleteTopic = async id => {
     const res = await Axios.delete(
       `https://frozen-temple-25034.herokuapp.com/admin/topic/${id}`
     );
     console.log(res.data);
     alert(res.data);
+    getTopics();
+  };
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+    deleteTopic(id);
   };
   useEffect(() => {
     getTopics();
@@ -64,7 +58,6 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
       collapse: !newArray[index].collapse
     };
     setTopic(newArray);
-    // console.log(newArray);
   };
   const onChange = e => {
     setNewTitle(e.target.value);
@@ -77,17 +70,9 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
       setValid(-1);
     } else {
       addTopic(newTitle);
-      // const newArray = [...topic];
-      // newArray[topic.length] = {
-      //   id: topic.length,
-      //   collapse: false,
-      //   title: newTitle
-      // };
-      // setTopic(newArray);
       setNewTitle("");
       setValid(0);
     }
-    // console.log(newArray);
   };
   return (
     <Fragment>
