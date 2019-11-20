@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Photon_Elearning_Portal_Frontend/precache-manifest.889850a395beb5af149b8339de1744e7.js"
+  "/Photon_Elearning_Portal_Frontend/precache-manifest.4f1a65dc2613cade03c183e379204612.js"
 );
 
 self.addEventListener('message', (event) => {
