@@ -99,7 +99,7 @@ const DomainComponent = () => {
             >
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
               <a>{domain.subject_title}</a>
-              <div>
+              {/* <div>
                 <input
                   className={`form-control ${
                     valid === 1 ? "is-valid" : valid === -1 ? "is-invalid" : ""
@@ -112,7 +112,7 @@ const DomainComponent = () => {
                 <div className="invalid-tooltip">
                   This field can't be empty.
                 </div>
-              </div>
+              </div> */}
               <div className="btn-group btn-group-justified pull-right">
                 <button
                   onClick={e => handleEdit(e, domain._id)}
