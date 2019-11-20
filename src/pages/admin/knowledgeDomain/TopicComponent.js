@@ -1,21 +1,27 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Collapse, CardHeader, CardBody, Card } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import PageList from "./PageList";
 import Axios from "axios";
 
 const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
-  const [newTitle, setNewTitle] = useState("");
-  const [valid, setValid] = useState(0);
   const [topic, setTopic] = useState([]);
+  const [newTitle, setNewTitle] = useState({ value: "", valid: 0 });
+  const [renameTitle, setRenameTitle] = useState({
+    value: "",
+    valid: 0,
+    id: ""
+  });
+  const [modal, setModal] = useState(false);
+
   const getTopics = async () => {
     const res = await Axios.get(
       `https://frozen-temple-25034.herokuapp.com/admin/topics/${chapter_id}`
     );
-    console.log(res.data);
     const newArray = res.data;
     setTopic(newArray);
   };
+
   const addTopic = async title => {
     const res = await Axios.post(
       `https://frozen-temple-25034.herokuapp.com/admin/addtopics/${chapter_id}`,
@@ -26,31 +32,41 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
         topicDescription: ""
       }
     );
-    console.log(res.data);
     alert(res.data.message);
     getTopics();
   };
+
   const deleteTopic = async id => {
     const res = await Axios.delete(
       `https://frozen-temple-25034.herokuapp.com/admin/topic/${id}`
     );
-    console.log(res.data);
     alert(res.data);
     getTopics();
   };
-  const handleDelete = async (e, id) => {
-    e.stopPropagation();
-    deleteTopic(id);
+
+  const renameTopic = async (title, id) => {
+    const res = await Axios.put(
+      `https://frozen-temple-25034.herokuapp.com/admin/topic/${id}`,
+      {
+        topicTitle: title,
+        topicDescription: ""
+      }
+    );
+    alert(res.data.message);
+    getTopics();
   };
+
   useEffect(() => {
     getTopics();
   }, []);
+
   useEffect(() => {
     const withCollapse = [...topic];
     withCollapse.map(obj => (obj.collapse = false));
     setTopic(withCollapse);
     console.log(topic);
   }, [topic.length]);
+
   const toggleCollapse = index => {
     const newArray = [...topic];
     newArray[index] = {
@@ -59,21 +75,45 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
     };
     setTopic(newArray);
   };
+
   const onChange = e => {
-    setNewTitle(e.target.value);
-    if (newTitle) {
-      setValid(1);
+    setNewTitle({ ...newTitle, value: e.target.value });
+    if (newTitle.valid) {
+      setNewTitle({ ...newTitle, valid: 1 });
     }
   };
+
+  const onModalChange = e => {
+    setRenameTitle({ ...renameTitle, value: e.target.value });
+    if (renameTitle.valid) {
+      setRenameTitle({ ...renameTitle, valid: 1 });
+    }
+  };
+
   const handleAdd = newTitle => {
     if (newTitle === "") {
-      setValid(-1);
+      setNewTitle({ ...newTitle, valid: -1 });
     } else {
       addTopic(newTitle);
-      setNewTitle("");
-      setValid(0);
+      setNewTitle({ value: "", valid: 0 });
     }
   };
+
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
+    deleteTopic(id);
+  };
+
+  const handleEdit = () => {
+    if (renameTitle.value === "") {
+      setRenameTitle({ ...renameTitle, valid: -1 });
+    } else {
+      renameTopic(renameTitle.value, renameTitle.id);
+      setRenameTitle({ value: "", valid: 0 });
+      setModal(!modal);
+    }
+  };
+
   return (
     <Fragment>
       <div id="accordion" className="accordion">
@@ -89,13 +129,62 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
               <a>{topic.topic_title}</a>
               <div className="btn-group btn-group-justified pull-right">
-                <Link className="btn btn-xs btn-primary">Rename</Link>
-                <Link
+                <button
+                  onClick={e => {
+                    setModal(!modal);
+                    setRenameTitle({ ...renameTitle, id: topic._id });
+                    e.stopPropagation();
+                  }}
+                  className="btn btn-xs btn-primary"
+                >
+                  Rename
+                </button>
+
+                <Modal isOpen={modal} toggle={e => setModal(!modal)}>
+                  <ModalHeader toggle={e => setModal(!modal)}>
+                    Rename
+                  </ModalHeader>
+                  <ModalBody>
+                    <div>
+                      <input
+                        className={`form-control ${
+                          renameTitle.valid === 1
+                            ? "is-valid"
+                            : renameTitle.valid === -1
+                            ? "is-invalid"
+                            : ""
+                        }`}
+                        type="text"
+                        value={renameTitle.value}
+                        placeholder="Enter New Topic Name."
+                        onChange={e => onModalChange(e)}
+                      />
+                      <div className="invalid-tooltip">
+                        This field can't be empty.
+                      </div>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter>
+                    <button
+                      className="btn btn-white"
+                      onClick={e => setModal(!modal)}
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={e => handleEdit(e)}
+                      className="btn btn-success"
+                    >
+                      Submit
+                    </button>
+                  </ModalFooter>
+                </Modal>
+                <button
                   onClick={e => handleDelete(e, topic._id)}
                   className="btn btn-xs btn-danger"
                 >
                   Delete
-                </Link>
+                </button>
               </div>
             </CardHeader>
             <Collapse isOpen={topic.collapse}>
@@ -115,11 +204,14 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
           <div className="col-6">
             <input
               className={`form-control ${
-                valid === 1 ? "is-valid" : valid === -1 ? "is-invalid" : ""
+                newTitle.valid === 1
+                  ? "is-valid"
+                  : newTitle.valid === -1
+                  ? "is-invalid"
+                  : ""
               }`}
-              required
               type="text"
-              value={newTitle}
+              value={newTitle.value}
               placeholder="Enter New Topic Name."
               onChange={e => onChange(e)}
             />
@@ -127,7 +219,7 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
           </div>
           <div className="col-6">
             <button
-              onClick={e => handleAdd(newTitle)}
+              onClick={e => handleAdd(newTitle.value)}
               className="btn btn-primary btn-block m-b-5"
             >
               Add Topic

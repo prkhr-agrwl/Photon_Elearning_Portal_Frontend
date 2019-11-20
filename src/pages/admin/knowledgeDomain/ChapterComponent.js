@@ -1,21 +1,27 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Collapse, CardHeader, CardBody, Card } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import TopicComponent from "./TopicComponent.js";
-import { Link } from "react-router-dom";
 import Axios from "axios";
 
 const ChapterComponent = ({ subject_id, subject_title }) => {
-  const [newTitle, setNewTitle] = useState("");
-  const [valid, setValid] = useState(0);
   const [chapter, setChapter] = useState([]);
+  const [newTitle, setNewTitle] = useState({ value: "", valid: 0 });
+  const [renameTitle, setRenameTitle] = useState({
+    value: "",
+    valid: 0,
+    id: ""
+  });
+  const [modal, setModal] = useState(false);
+
   const getChapters = async () => {
     const res = await Axios.get(
       `https://frozen-temple-25034.herokuapp.com/admin/chapters/${subject_id}`
     );
-    console.log(res.data);
     const newArray = res.data;
     setChapter(newArray);
   };
+
   const addChapter = async title => {
     const res = await Axios.post(
       `https://frozen-temple-25034.herokuapp.com/admin/addchapters/${subject_id}`,
@@ -26,31 +32,41 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
         chapterDescription: ""
       }
     );
-    console.log(res.data);
     alert(res.data.message);
     getChapters();
   };
+
   const deleteChapter = async id => {
     const res = await Axios.delete(
       `https://frozen-temple-25034.herokuapp.com/admin/chapter/${id}`
     );
-    console.log(res.data);
     alert(res.data);
     getChapters();
   };
-  const handleDelete = async (e, id) => {
-    e.stopPropagation();
-    deleteChapter(id);
+
+  const renameChapter = async (title, id) => {
+    const res = await Axios.put(
+      `https://frozen-temple-25034.herokuapp.com/admin/chapter/${id}`,
+      {
+        chapterTitle: title,
+        chapterDescription: ""
+      }
+    );
+    alert(res.data.message);
+    getChapters();
   };
+
   useEffect(() => {
     getChapters();
   }, []);
+
   useEffect(() => {
     const withCollapse = [...chapter];
     withCollapse.map(obj => (obj.collapse = false));
     setChapter(withCollapse);
     console.log(chapter);
   }, [chapter.length]);
+
   const toggleCollapse = index => {
     const newArray = [...chapter];
     newArray[index] = {
@@ -59,21 +75,45 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
     };
     setChapter(newArray);
   };
+
   const onChange = e => {
-    setNewTitle(e.target.value);
-    if (newTitle) {
-      setValid(1);
+    setNewTitle({ ...newTitle, value: e.target.value });
+    if (newTitle.valid) {
+      setNewTitle({ ...newTitle, valid: 1 });
     }
   };
+
+  const onModalChange = e => {
+    setRenameTitle({ ...renameTitle, value: e.target.value });
+    if (renameTitle.valid) {
+      setRenameTitle({ ...renameTitle, valid: 1 });
+    }
+  };
+
   const handleAdd = newTitle => {
     if (newTitle === "") {
-      setValid(-1);
+      setNewTitle({ ...newTitle, valid: -1 });
     } else {
       addChapter(newTitle);
-      setNewTitle("");
-      setValid(0);
+      setNewTitle({ value: "", valid: 0 });
     }
   };
+
+  const handleDelete = (e, id) => {
+    e.stopPropagation();
+    deleteChapter(id);
+  };
+
+  const handleEdit = () => {
+    if (renameTitle.value === "") {
+      setRenameTitle({ ...renameTitle, valid: -1 });
+    } else {
+      renameChapter(renameTitle.value, renameTitle.id);
+      setRenameTitle({ value: "", valid: 0 });
+      setModal(!modal);
+    }
+  };
+
   return (
     <Fragment>
       <div id="accordion" className="accordion">
@@ -89,13 +129,62 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
               <i className="fa fa-book fa-2x f-s-8 mr-2 text-teal"></i>{" "}
               <a>{chapter.chapterTitle}</a>
               <div className="btn-group btn-group-justified pull-right">
-                <Link className="btn btn-xs btn-primary">Rename</Link>
-                <Link
+                <button
+                  onClick={e => {
+                    setModal(!modal);
+                    setRenameTitle({ ...renameTitle, id: chapter._id });
+                    e.stopPropagation();
+                  }}
+                  className="btn btn-xs btn-primary"
+                >
+                  Rename
+                </button>
+
+                <Modal isOpen={modal} toggle={e => setModal(!modal)}>
+                  <ModalHeader toggle={e => setModal(!modal)}>
+                    Rename
+                  </ModalHeader>
+                  <ModalBody>
+                    <div>
+                      <input
+                        className={`form-control ${
+                          renameTitle.valid === 1
+                            ? "is-valid"
+                            : renameTitle.valid === -1
+                            ? "is-invalid"
+                            : ""
+                        }`}
+                        type="text"
+                        value={renameTitle.value}
+                        placeholder="Enter New Chapter Name."
+                        onChange={e => onModalChange(e)}
+                      />
+                      <div className="invalid-tooltip">
+                        This field can't be empty.
+                      </div>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter>
+                    <button
+                      className="btn btn-white"
+                      onClick={e => setModal(!modal)}
+                    >
+                      Close
+                    </button>
+                    <button
+                      onClick={e => handleEdit(e)}
+                      className="btn btn-success"
+                    >
+                      Submit
+                    </button>
+                  </ModalFooter>
+                </Modal>
+                <button
                   onClick={e => handleDelete(e, chapter._id)}
                   className="btn btn-xs btn-danger"
                 >
                   Delete
-                </Link>
+                </button>
               </div>
             </CardHeader>
             <Collapse isOpen={chapter.collapse}>
@@ -114,10 +203,14 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
           <div className="col-6">
             <input
               className={`form-control ${
-                valid === 1 ? "is-valid" : valid === -1 ? "is-invalid" : ""
+                newTitle.valid === 1
+                  ? "is-valid"
+                  : newTitle.valid === -1
+                  ? "is-invalid"
+                  : ""
               }`}
               type="text"
-              value={newTitle}
+              value={newTitle.value}
               placeholder="Enter New Chapter Name."
               onChange={e => onChange(e)}
             />
@@ -125,7 +218,7 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
           </div>
           <div className="col-6">
             <button
-              onClick={e => handleAdd(newTitle)}
+              onClick={e => handleAdd(newTitle.value)}
               className="btn btn-primary btn-block m-b-5"
             >
               Add Chapter
