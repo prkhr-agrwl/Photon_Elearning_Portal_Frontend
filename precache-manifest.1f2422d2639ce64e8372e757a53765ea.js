@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8007ebfec8ce1c6ddc495d0944eb323d",
+    "revision": "11976b6a1c007731ceb5e24e2c8bc1d7",
     "url": "/Photon_Elearning_Portal_Frontend/index.html"
   },
   {
-    "revision": "311210c73188974b55e4",
-    "url": "/Photon_Elearning_Portal_Frontend/static/css/2.0ba19038.chunk.css"
+    "revision": "e2ac84af40f0f88ff39e",
+    "url": "/Photon_Elearning_Portal_Frontend/static/css/2.e959351a.chunk.css"
   },
   {
-    "revision": "ef33463f15f9128c31cf",
+    "revision": "c53f0a1e9a449169551b",
     "url": "/Photon_Elearning_Portal_Frontend/static/css/main.f331ac71.chunk.css"
   },
   {
-    "revision": "311210c73188974b55e4",
+    "revision": "e2ac84af40f0f88ff39e",
     "url": "/Photon_Elearning_Portal_Frontend/static/js/2.11c1746c.chunk.js"
   },
   {
-    "revision": "ef33463f15f9128c31cf",
-    "url": "/Photon_Elearning_Portal_Frontend/static/js/main.41270cb6.chunk.js"
+    "revision": "c53f0a1e9a449169551b",
+    "url": "/Photon_Elearning_Portal_Frontend/static/js/main.9d826747.chunk.js"
   },
   {
     "revision": "31377639c935bf1a195e",
