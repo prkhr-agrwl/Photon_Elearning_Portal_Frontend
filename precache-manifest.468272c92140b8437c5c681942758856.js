@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d3caea508539b004c76f215c1fa6cfaf",
+    "revision": "6a43e4240f782fa024a59f1850cab00f",
     "url": "/Photon_Elearning_Portal_Frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Photon_Elearning_Portal_Frontend/static/css/2.c826ef92.chunk.css"
   },
   {
-    "revision": "8a8e1d169f79e9ba8809",
+    "revision": "231b2a03d2a346631026",
     "url": "/Photon_Elearning_Portal_Frontend/static/css/main.f331ac71.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Photon_Elearning_Portal_Frontend/static/js/2.7f1933ac.chunk.js"
   },
   {
-    "revision": "8a8e1d169f79e9ba8809",
-    "url": "/Photon_Elearning_Portal_Frontend/static/js/main.09442538.chunk.js"
+    "revision": "231b2a03d2a346631026",
+    "url": "/Photon_Elearning_Portal_Frontend/static/js/main.623e1283.chunk.js"
   },
   {
     "revision": "31377639c935bf1a195e",
