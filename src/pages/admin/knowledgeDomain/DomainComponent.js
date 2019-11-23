@@ -76,24 +76,19 @@ const DomainComponent = () => {
   };
 
   const onChange = e => {
-    setNewTitle({ ...newTitle, value: e.target.value });
-    if (newTitle.valid) {
-      setNewTitle({ ...newTitle, valid: 1 });
-    }
+    setNewTitle({ valid: 1, value: e.target.value });
   };
 
   const onModalChange = e => {
-    setRenameTitle({ ...renameTitle, value: e.target.value });
-    if (renameTitle.valid) {
-      setRenameTitle({ ...renameTitle, valid: 1 });
-    }
+    setRenameTitle({ ...renameTitle, valid: 1, value: e.target.value });
   };
 
-  const handleAdd = newTitle => {
-    if (newTitle === "") {
+  const handleAdd = title => {
+    if (!title) {
       setNewTitle({ ...newTitle, valid: -1 });
+      console.log(title);
     } else {
-      addSubject(newTitle);
+      addSubject(title);
       setNewTitle({ value: "", valid: 0 });
     }
   };
@@ -112,7 +107,7 @@ const DomainComponent = () => {
       setModal(!modal);
     }
   };
-  
+
   return (
     <Fragment>
       <div id="accordion" className="accordion">
@@ -178,7 +173,6 @@ const DomainComponent = () => {
                     </button>
                   </ModalFooter>
                 </Modal>
-
                 <button
                   onClick={e => handleDelete(e, domain._id)}
                   className="btn btn-xs btn-danger"

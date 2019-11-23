@@ -64,7 +64,6 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
     const withCollapse = [...topic];
     withCollapse.map(obj => (obj.collapse = false));
     setTopic(withCollapse);
-    console.log(topic);
   }, [topic.length]);
 
   const toggleCollapse = index => {
@@ -76,25 +75,19 @@ const TopicComponent = ({ subject_id, chapter_id, chapter_title }) => {
     setTopic(newArray);
   };
 
-  const onChange = e => {
-    setNewTitle({ ...newTitle, value: e.target.value });
-    if (newTitle.valid) {
-      setNewTitle({ ...newTitle, valid: 1 });
-    }
-  };
+   const onChange = e => {
+     setNewTitle({ valid: 1, value: e.target.value });
+   };
 
-  const onModalChange = e => {
-    setRenameTitle({ ...renameTitle, value: e.target.value });
-    if (renameTitle.valid) {
-      setRenameTitle({ ...renameTitle, valid: 1 });
-    }
-  };
+   const onModalChange = e => {
+     setRenameTitle({ ...renameTitle, valid: 1, value: e.target.value });
+   };
 
-  const handleAdd = newTitle => {
-    if (newTitle === "") {
+  const handleAdd = title => {
+    if (!title) {
       setNewTitle({ ...newTitle, valid: -1 });
     } else {
-      addTopic(newTitle);
+      addTopic(title);
       setNewTitle({ value: "", valid: 0 });
     }
   };

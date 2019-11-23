@@ -40,7 +40,6 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
     const res = await Axios.delete(
       `https://frozen-temple-25034.herokuapp.com/admin/page/${id}`
     );
-    console.log(res.data);
     alert(res.data);
     getPages();
   };
@@ -65,7 +64,6 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
     const withCollapse = [...page];
     withCollapse.map(obj => (obj.collapse = false));
     setPage(withCollapse);
-    console.log(page);
   }, [page.length]);
 
   const toggleCollapse = index => {
@@ -77,25 +75,19 @@ const PageList = ({ subject_id, chapter_id, topic_id, topic_title }) => {
     setPage(newArray);
   };
 
-  const onChange = e => {
-    setNewTitle({ ...newTitle, value: e.target.value });
-    if (newTitle.valid) {
-      setNewTitle({ ...newTitle, valid: 1 });
-    }
-  };
+   const onChange = e => {
+     setNewTitle({ valid: 1, value: e.target.value });
+   };
 
-  const onModalChange = e => {
-    setRenameTitle({ ...renameTitle, value: e.target.value });
-    if (renameTitle.valid) {
-      setRenameTitle({ ...renameTitle, valid: 1 });
-    }
-  };
+   const onModalChange = e => {
+     setRenameTitle({ ...renameTitle, valid: 1, value: e.target.value });
+   };
 
-  const handleAdd = newTitle => {
-    if (newTitle === "") {
+  const handleAdd = title => {
+    if (!title) {
       setNewTitle({ ...newTitle, valid: -1 });
     } else {
-      addPage(newTitle);
+      addPage(title);
       setNewTitle({ value: "", valid: 0 });
     }
   };

@@ -64,7 +64,6 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
     const withCollapse = [...chapter];
     withCollapse.map(obj => (obj.collapse = false));
     setChapter(withCollapse);
-    console.log(chapter);
   }, [chapter.length]);
 
   const toggleCollapse = index => {
@@ -76,25 +75,19 @@ const ChapterComponent = ({ subject_id, subject_title }) => {
     setChapter(newArray);
   };
 
-  const onChange = e => {
-    setNewTitle({ ...newTitle, value: e.target.value });
-    if (newTitle.valid) {
-      setNewTitle({ ...newTitle, valid: 1 });
-    }
-  };
+   const onChange = e => {
+     setNewTitle({ valid: 1, value: e.target.value });
+   };
 
-  const onModalChange = e => {
-    setRenameTitle({ ...renameTitle, value: e.target.value });
-    if (renameTitle.valid) {
-      setRenameTitle({ ...renameTitle, valid: 1 });
-    }
-  };
+   const onModalChange = e => {
+     setRenameTitle({ ...renameTitle, valid: 1, value: e.target.value });
+   };
 
-  const handleAdd = newTitle => {
-    if (newTitle === "") {
+  const handleAdd = title => {
+    if (!title) {
       setNewTitle({ ...newTitle, valid: -1 });
     } else {
-      addChapter(newTitle);
+      addChapter(title);
       setNewTitle({ value: "", valid: 0 });
     }
   };
